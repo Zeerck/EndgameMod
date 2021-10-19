@@ -1,0 +1,3 @@
+displayName = Endgame
+author = Durthu & Sudarin & Zeerck
+version = 0.1
