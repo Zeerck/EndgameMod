@@ -5,6 +5,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Endgame.NPCs.TownNPCs;
 using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace Endgame.NPCs.Bosses
 {
@@ -22,7 +23,7 @@ namespace Endgame.NPCs.Bosses
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Borisich Endgame");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichBossName"));
             Main.npcFrameCount[npc.type] = 6;
             NPCID.Sets.TrailingMode[npc.type] = 1;
         }
@@ -54,7 +55,7 @@ namespace Endgame.NPCs.Bosses
 
             if (getMod != null)
             {
-                music = getMod.GetSoundSlot(SoundType.Music, "Sounds/Music/YHARONREBIRTH");
+                music = getMod.GetSoundSlot(SoundType.Music, "Sounds/Music/UniversalCollapse");
             }
             else
             {

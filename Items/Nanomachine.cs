@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Endgame.Items
@@ -8,8 +9,8 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Icon of the Holy All-Writing");
-            Tooltip.SetDefault("The beginning of the Endgame");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.NanomachineName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.NanomachineDescription"));
         }
 
         public override void SetDefaults()

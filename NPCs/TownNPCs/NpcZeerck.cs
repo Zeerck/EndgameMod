@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using System.Collections.Generic;
 
 namespace Endgame.NPCs.TownNPCs
@@ -12,12 +13,12 @@ namespace Endgame.NPCs.TownNPCs
 
         private static readonly List<string> _names = new List<string>()
         {
-            "Zeerck",
-            "Zeercky",
-            "Zeer4eck",
-            "Dmitrix",
-            "Dima 800",
-            "Dipa"
+            Language.GetTextValue("Mods.Endgame.ZeerckName"),
+            Language.GetTextValue("Mods.Endgame.ZeerckyName"),
+            Language.GetTextValue("Mods.Endgame.Zeer4eckName"),
+            Language.GetTextValue("Mods.Endgame.DmitrixName"),
+            Language.GetTextValue("Mods.Endgame.Dima800Name"),
+            Language.GetTextValue("Mods.Endgame.DipaName")
         };
 
         public override void SetStaticDefaults()
@@ -75,8 +76,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            _npcName = _names[Main.rand.Next(_names.Count)];
-            return _npcName;
+            return _npcName = _names[WorldGen.genRand.Next(_names.Count)];
         }
 
         public override void NPCLoot()

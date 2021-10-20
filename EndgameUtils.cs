@@ -5,6 +5,8 @@ using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
+using Terraria.Localization;
 
 namespace Endgame
 {
@@ -45,6 +47,23 @@ namespace Endgame
             TileObjectData.addTile(modTile.Type);
 
             modTile.AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
+        }
+
+        public static void DisplayLocalizedText(string key, Color? textColor = null)
+        {
+            if (!textColor.HasValue)
+                textColor = new Color?(Color.BlueViolet);
+
+            if (Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Main.NewText(Language.GetTextValue(key), textColor.Value, false);
+            }
+            else
+            {
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                    return;
+                NetMessage.BroadcastChatMessage(NetworkText.FromKey(key, new object[0]), textColor.Value, -1);
+            }
         }
     }
 }

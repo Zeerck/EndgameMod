@@ -1,6 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Endgame.Tiles.Decorative;
+using Terraria.Localization;
 
 namespace Endgame.Items
 {
@@ -8,8 +9,8 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("The Green Man");
-            Tooltip.SetDefault("Ah, again, your little green mens...");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.GreenManName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.GreenManDescription"));
         }
 
         public override void SetDefaults()

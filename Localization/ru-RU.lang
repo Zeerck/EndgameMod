@@ -1,1 +1,91 @@
-﻿
+﻿# Localization. First line not reading. idk why
+
+# NPCs Jobs Names
+
+NPCName.NpcDurthu=Отец Всех Милф
+NPCName.NpcSudarin=Лорд Пепегон
+NPCName.NpcZeerck=Анархист
+
+# NPCs Names
+
+DurthuName=Дуртху
+ComradeGruzoffName=Товарищ Грузофф
+ComradeGruzonName=Товарищ Грузон
+
+SudarinName=Сударин
+SuadrinName=Суадрин
+SudorinName=Судорин
+SDOGEName=СДОДЖ
+
+ZeerckName=Зирк
+ZeerckyName=Зирки
+Zeer4eckName=Зирчик
+DmitrixName=Дмитрикс
+Dima800Name=Дима 800
+DipaName=Дипа
+
+# NPCs Texts
+
+NpcDurthuText1=Многие говорят, что я жадный, но для меня 26 миллионов серебряников - это немного.
+NpcDurthuText2=Знаешь, в какой-то степени я тоже Всепишущий.
+NpcDurthuText3=Раньше я доверял Визарту...
+NpcDurthuText4=В галактике была война только потому, что 
+NpcDurthuText41= пригласил жену галактического императора «Выпить Чаю».
+NpcDurthuText5=Знаешь, у меня до сих пор всплывают воспоминания о том времени, когда мы были в Storm Team... Я просто надеюсь, что никогда больше не встречу этих чёрно-жёлтых «бакуганов».
+NpcDurthuText6=Фабрики — Заводам, Рабочих — Крестьянам, Милф — 
+NpcDurthuText7=Не верь самураям клана Троцкий.
+NpcDurthuText8=Я пытался достучаться до него, но получил прозвище «Демагог».
+NpcDurthuText9=У меня есть корманное устройство, в котором хранятся миллиарды вселенных.
+NpcDurthuText10=Такие слова, как «Продолжим» и «Почему не пишите?»... До сих пор пробирают до костей.
+NpcDurthuText11=**«Саймон: За тобой должок, помнишь?»**\nНет, я не помню.
+NpcDurthuText12=Пожалуйста, никогда не говори «Поехали», «Иди со мной», «ПОШЛИ» и «ПОИДЕМ». НИКОГДА!
+
+NpcDurthuTextBloodMoon=ТЫ НЕ ЗНАЕШЬ, К ЧЕМ ЭТО ВЕДЁТ!
+
+NpcDurthuTextConspectus1=Оу, у тебя есть конспекты 
+NpcDurthuTextConspectus12='а! Я думаю тебе стоит обратиться к нему с ними.
+
+# Buttons
+
+NpcDurthuTextButton=Получить Трофей
+
+# Buffs
+
+WhoWroteEverythingBuffName=Тот кто всё писал...
+WhoWroteEverythingBuffDescription=Вы прочитали все конспекты, теперь вы едины с водой и невосприимчивы к огню.\nВы воплощение воды.
+
+# Bags
+
+BorisichBagName=Сумка с Конспектами
+BorisichBagDescription=Ценой чего вы получили это?\n<right> чтобы открыть.
+
+# Trophies
+
+AssemblerVirtualMachineName=Виртуальная Машина на Ассемблере
+
+# Items
+
+ConspectusName=Конспектики
+ConspectusDescription=Вы чувствуете влагу.\nПохоже, что тут много воды.\nДает невосприимчивость к огню, хождению по воде и дыханию под водой.
+
+IconOfHolyAllWritingName=Икона Святого Всепишущего
+IconOfHolyAllWritingDescription=Начинает Endgame
+
+NanomachineName=Наномашинка
+NanomachineDescription=Просто наномашинка... Не более.
+
+GreenManName=Зелёный Человечек
+GreenManDescription=Ох, опять ваши зелёные человечки...
+
+# Bosses
+
+BorisichBossName=Борисыч Endgame
+
+# Bosses Chat Texts
+
+BorisichBossText1=Вы то гений, я понимаю... Остальные то почему не пишут?
+
+# Particles Names
+
+BorisichShootName=Сила Ассемблера, Сынок!
+NpcShootName=Сила C#, Старик!

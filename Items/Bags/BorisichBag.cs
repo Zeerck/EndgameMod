@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Endgame.Items.Bags
@@ -10,8 +11,8 @@ namespace Endgame.Items.Bags
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Bag with Conspectus");
-            Tooltip.SetDefault("At what cost did you get it?\n<right> to open it.");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichBagName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichBagDescription"));
         }
 
         public override void SetDefaults()

@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using System.Collections.Generic;
 
 namespace Endgame.NPCs.TownNPCs
@@ -8,14 +9,11 @@ namespace Endgame.NPCs.TownNPCs
     [AutoloadHead]
     public class NpcDurthu : ModNPC
     {
-        private string _npcName;
-
         private static readonly List<string> _names = new List<string>()
         {
-            "Durthu",
-            "Comrade Gruzoff",
-            "Comrade",
-            "Gruzoff"
+            Language.GetTextValue("Mods.Endgame.DurthuName"),
+            Language.GetTextValue("Mods.Endgame.ComradeGruzoffName"),
+            Language.GetTextValue("Mods.Endgame.ComradeGruzonName")
         };
 
         public override void SetStaticDefaults()
@@ -73,8 +71,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            _npcName = _names[Main.rand.Next(_names.Count)];
-            return _npcName;
+            return _names[WorldGen.genRand.Next(_names.Count)];
         }
 
         public override void NPCLoot()
@@ -90,27 +87,27 @@ namespace Endgame.NPCs.TownNPCs
 
             List<string> chatList = new List<string>();
 
-            chatList.Add("Many people say I'm greedy, but as for me 26 million pieces of silver is not much.");
-            chatList.Add("You know, actually, i'm too all-writing.");
-            chatList.Add("I trust Vizart before...");
-            chatList.Add($"There was a war in a galaxy just because {ZeerckNpcName} invited a wife of galactic emperor to \"drink some tea\".");
-            chatList.Add("You know, i still have flashbacks from the time we were in Storm Team... I just hope i will never ever meet this black-yellow \"bakugans\" again.");
-            chatList.Add($"Fabrics to Factories, Workers to Peasants, Milf's to {DurthuNpcName}.");
-            chatList.Add("Do not trust the samurai of the Trotsky clan.");
-            chatList.Add("I tried to reach him, but get name \"Demogog\".");
-            chatList.Add("I have a device in my pocket that contains over billions universes.");
-            chatList.Add("Words like \"Continue\" and \"Why you don't writing?...\" i still get shivers.");
-            chatList.Add("**\"Simon: You owe me a favor, remember?\"**\nNo, i don't remember.");
-            chatList.Add("Please never say \"LET'S GO\", \"COME WITH ME\", \"POSHLI\" and \"POIDEM\". NEVER!");
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText1"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText2"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText3"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText4") + ZeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuText41"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText5"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText6") + DurthuNpcName);
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText7"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText8"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText9"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText10"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText11"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText12"));
 
             if (!Main.dayTime && Main.bloodMoon)
             {
-                chatList.Add("YOU DON'T KNOW WHAT IT WILL LEAD TO!");
+                chatList.Add("Mods.Endgame.NpcDurthuTextBloodMoon");
             }
 
-            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()))
+            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgamePlayer.ConspectusReader)
             {
-                chatList.Add($"Oh, you have {SudarinNpcName}'s Conspectus! I think you should contact him with them.");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1") + SudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus12"));
             }
 
             return chatList[Main.rand.Next(chatList.Count)];
@@ -118,7 +115,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Give Trophy";
+            button = Language.GetTextValue("Mods.Endgame.NpcDurthuTextButton");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)

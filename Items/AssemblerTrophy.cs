@@ -1,11 +1,12 @@
 ﻿using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Endgame.Items
 {
     public class AssemblerTrophy : ModItem
     {
-        public override void SetStaticDefaults() => DisplayName.SetDefault("Assembler Virtual Machine");
+        public override void SetStaticDefaults() => DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.AssemblerVirtualMachineName"));
 
         public override void SetDefaults()
         {

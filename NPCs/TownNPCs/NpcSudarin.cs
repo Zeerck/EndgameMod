@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace Endgame.NPCs.TownNPCs
@@ -8,14 +9,12 @@ namespace Endgame.NPCs.TownNPCs
     [AutoloadHead]
     class NpcSudarin : ModNPC
     {
-        private string _npcName;
-
         private static readonly List<string> _names = new List<string>()
         {
-            "Sudarin",
-            "Suadrin",
-            "Sudorin",
-            "SDOGE"
+            Language.GetTextValue("Mods.Endgame.SudarinName"),
+            Language.GetTextValue("Mods.Endgame.SuadrinName"),
+            Language.GetTextValue("Mods.Endgame.SudorinName"),
+            Language.GetTextValue("Mods.Endgame.SDOGEName")
         };
 
         public override void SetStaticDefaults()
@@ -73,8 +72,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            _npcName = _names[Main.rand.Next(_names.Count)];
-            return _npcName;
+            return _names[WorldGen.genRand.Next(_names.Count)];
         }
 
         public override void NPCLoot()

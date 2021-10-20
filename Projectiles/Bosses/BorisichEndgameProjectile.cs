@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Localization;
 
 namespace Endgame.Projectiles.Bosses
 {
@@ -11,7 +12,7 @@ namespace Endgame.Projectiles.Bosses
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Borisich Shoot");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichShootName"));
             Main.projFrames[projectile.type] = 3;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;

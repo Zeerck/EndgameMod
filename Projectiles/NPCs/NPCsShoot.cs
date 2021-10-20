@@ -4,6 +4,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using System;
 using Microsoft.Xna.Framework.Graphics;
+using Terraria.Localization;
 
 namespace Endgame.Projectiles.NPCs
 {
@@ -11,7 +12,7 @@ namespace Endgame.Projectiles.NPCs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("NPCs Shoot");
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.NpcShootName"));
             Main.projFrames[projectile.type] = 3;
             ProjectileID.Sets.TrailCacheLength[projectile.type] = 4;
             ProjectileID.Sets.TrailingMode[projectile.type] = 0;

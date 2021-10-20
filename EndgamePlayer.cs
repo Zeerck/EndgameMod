@@ -4,7 +4,8 @@ namespace Endgame
 {
     public class EndgamePlayer : ModPlayer
     {
-        public bool TheOneWhoCould;
+        public static bool TheOneWhoCould;
+        public static bool ConspectusReader;
 
         public override void ResetEffects()
         {
