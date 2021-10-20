@@ -9,8 +9,8 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ConspectusName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ConspectusDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.ConspectusName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.ConspectusDescription"));
         }
 
         public override void SetDefaults()
