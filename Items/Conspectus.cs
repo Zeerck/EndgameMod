@@ -23,7 +23,7 @@ namespace Endgame.Items
             item.useStyle = ItemUseStyleID.EatingUsing;
 
             item.maxStack = 1;
-            //item.buffTime = 160000;
+            item.buffTime = 245000;
             item.rare = ItemRarityID.Expert;
             item.buffType = ModContent.BuffType<WhoWroteEverythingBuff>();
 

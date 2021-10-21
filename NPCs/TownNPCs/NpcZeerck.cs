@@ -92,47 +92,47 @@ namespace Endgame.NPCs.TownNPCs
 
             List<string> chatList = new List<string>();
 
-            chatList.Add("Check!");
-            chatList.Add("I have a vehicle that breaks from almost any spit, and it costs me 24,000 pieces of silver to fix it. I think to replace it with something, but I don't even know what...");
-            chatList.Add($"I heard that {SudarinNpcName} wrote everything.");
-            chatList.Add($"Have you seen the icon of the holy all-writing? Yes, there is a photo of {SudarinNpcName} himself.");
-            chatList.Add($"Be careful, {DurthuNpcName} weighs 300 kilograms and is capable of breaking through a wall if he wants to.");
-            chatList.Add($"During the 40,000 year war, {DurthuNpcName} and I fought against everyone and spread corruption everywhere. Yes, those were good times...");
-            chatList.Add("Borisich called us demagogues. I still didn’t understand what he didn’t like in the phrase \"You are wrong.\"");
-            chatList.Add("I hate gnomes...");
-            chatList.Add("Where are you, Jabroni v Tanke?...");
-            chatList.Add("I hate logs...");
-            chatList.Add("EGGS");
-            chatList.Add("**\"Simon: You owe me a favor, remember?\"**\nI will return everything! Just leave me alone!");
-            chatList.Add("I'm just a number riding solo in the code. Half Human, half Machine.");
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText1"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText2"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText3") + SudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcZeerckText31"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText4") + SudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcZeerckText41"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText5") + DurthuNpcName + Language.GetTextValue("Mods.Endgame.NpcZeerckText51"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText6") + DurthuNpcName + Language.GetTextValue("Mods.Endgame.NpcZeerckText61"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText7"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText8"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText9"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText10"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText11"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText12"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText13"));
 
 
             if (!Main.dayTime && !Main.bloodMoon)
-                chatList.Add("Sometimes I have strange dreams, where I am in the same bed with Borisich. It horny me...");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckNightText"));
 
             if (ZeerckNpcName == "Zeerck")
             {
-                chatList.Add("My jokes have ruined millions of lives. Everyone says they are not funny. I don't think so.");
-                chatList.Add("Infinity Gauntlet... Thanos' Wish... My jokes... I think it all has something in common.");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeerckText1"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeerckText2"));
             }
 
             if (ZeerckNpcName == "Zeercky")
-                chatList.Add("We are Zeercky, there are many of us...");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeerckyText"));
 
             if (ZeerckNpcName == "Zeer4eck")
-                chatList.Add("Have you heard anything about Zeerck? I hope he didn't give you any trouble with his jokes.");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeer4eckText"));
 
             if (ZeerckNpcName == "Dmitrix")
-                chatList.Add("I have a brother on the moon with a huge hammer. He also has a very strange head and pale skin.");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToDmitrixText"));
 
             if (ZeerckNpcName == "Dima 800")
             {
-                chatList.Add("I got my name from the great war against billions of zombies.");
-                chatList.Add("Have you ever heard about challenges?");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToDima800Text1"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToDima800Text2"));
             }
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()))
-                chatList.Add($"Oh, you have Conspectus, I think you should return them to {SudarinNpcName}.");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus") + SudarinNpcName + ".");
 
 
             return chatList[Main.rand.Next(chatList.Count)];
@@ -140,7 +140,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Give Icon";
+            button = Language.GetTextValue("Mods.Endgame.NpcZeerckTextButton");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)

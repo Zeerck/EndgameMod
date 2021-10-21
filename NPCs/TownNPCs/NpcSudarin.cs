@@ -83,23 +83,22 @@ namespace Endgame.NPCs.TownNPCs
         public override string GetChat()
         {
             string DurthuNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
-            string SudarinNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcSudarin>())].GivenName;
             string ZeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
             List<string> chatList = new List<string>();
 
-            chatList.Add($"{DurthuNpcName} was our chief commander in the times, when we was in Storm Team.");
-            chatList.Add("I participated in the war against the aliens. They sent at us giant ants, frogs, bees and etc.");
-            chatList.Add($"An interesting fact, once {ZeerckNpcName} name was \"Majima Bitch\".");
-            chatList.Add("Nanomachines SON!");
-            chatList.Add("Napas - Lavandos.");
-            chatList.Add("After all, there are really a lot of cops in Los Santos.");
-            chatList.Add("**\"Simon: You owe me a favor, remember?\"**\nAh, Again...");
-            chatList.Add("Everyone is afraid of Jumbo, but no one knows what he is afraid of.");
+            chatList.Add(DurthuNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText1"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText2"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3") + ZeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText31"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText4"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText5"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText6"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText7"));
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText8"));
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()))
             {
-                chatList.Add("Oh! My Conspectus! With their help, I can teach you the skills of a shadow scribe.");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinTextConspectus"));
             }
 
             return chatList[Main.rand.Next(chatList.Count)];
@@ -107,7 +106,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = "Give Green Man";
+            button = Language.GetTextValue("Mods.Endgame.NpcSudarinTextButton");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)

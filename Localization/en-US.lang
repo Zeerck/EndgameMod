@@ -39,9 +39,53 @@ NpcDurthuTextBloodMoon=YOU DON'T KNOW WHAT IT WILL LEAD TO!
 NpcDurthuTextConspectus1=Oh, you have 
 NpcDurthuTextConspectus12='s Conspectus! I think you should contact him with them.
 
+NpcSudarinText1= was our chief commander in the times, when we was in Storm Team.
+NpcSudarinText2=I participated in the war against the aliens. They sent at us giant ants, frogs, bees and etc.
+NpcSudarinText3=An interesting fact, once 
+NpcSudarinText31= name was "Majima Bitch".
+NpcSudarinText4=Nanomachines SON!
+NpcSudarinText5=Napas - Lavandos.
+NpcSudarinText6=After all, there are really a lot of cops in Los Santos.
+NpcSudarinText7=**\"Simon: You owe me a favor, remember?\"**\nAh, Again...
+NpcSudarinText8=Everyone is afraid of Jumbo, but no one thinks about what he is afraid of.
+
+NpcSudarinTextConspectus=Oh! My Conspectus! Yes, I personally wrote them without even having a pen. With their help, I can teach you the skills of the Shadow Scribe.
+
+NpcZeerckText1=Check!
+NpcZeerckText2=I have a vehicle that breaks down on almost any touch, and I need to fix it for 24,000 silver coins. I'm thinking of replacing it with something, but I don't even know what...
+NpcZeerckText3=I heard that 
+NpcZeerckText31= wrote everything.
+NpcZeerckText4=Have you seen the icon of the holy all-writing? Yes, there is a photo of 
+NpcZeerckText41= himself.
+NpcZeerckText5=Be careful, 
+NpcZeerckText51= weighs 300 kilograms and is capable of breaking through a wall if he wants to.
+NpcZeerckText6=During the 40,000 year war, 
+NpcZeerckText61= and I fought against all and spread defilement everywhere. Yes, there were good times...
+NpcZeerckText7=Borisich called us demagogues. I still didn’t understand what he didn’t like in the phrase "You are wrong."
+NpcZeerckText8=I hate gnomes...
+NpcZeerckText9=Where are you, Jabroni v Tanke?...
+NpcZeerckText10=I hate logs...
+NpcZeerckText11=EGGS
+NpcZeerckText12=**\"Simon: You owe me a favor, remember?\"**\nI will return everything! Just leave me alone!
+NpcZeerckText13=I'm just a number riding solo in the code. Half Human, half Machine.
+
+NpcZeerckNightText=Sometimes I have strange dreams, where I am in the same bed with Borisich. It horny me...
+
+NpcZeerckToZeerckText1=My jokes have ruined millions of lives. Everyone says they are not funny. I don't think so.
+NpcZeerckToZeerckText2=Infinity Gauntlet... Thanos' Wish... My jokes... I think it all has something in common.
+NpcZeerckToZeerckyText=We are Zeercky, we are everywhere ...
+NpcZeerckToZeer4eckText=Have you heard anything about Zeerck? I hope he didn't give you any trouble with his jokes.
+NpcZeerckToDmitrixText=I have a brother on the moon with a huge hammer. He also has a very strange head and pale skin.
+NpcZeerckToDima800Text1=I got my name from the great war against billions of zombies.
+NpcZeerckToDima800Text2=Have you ever heard about challenges?
+
+NpcDurthuTextConspectus=Oh, you have Conspectus, I think you should return them to 
+
 # Buttons
 
 NpcDurthuTextButton=Get Trophy
+NpcSudarinTextButton=Get Green Men
+NpcZeerckTextButton=Get Icon Of Holy All-Writer
 
 # Buffs
 
