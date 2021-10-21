@@ -9,8 +9,6 @@ namespace Endgame.NPCs.TownNPCs
     [AutoloadHead]
     public class NpcZeerck : ModNPC
     {
-        private string _npcName;
-
         private static readonly List<string> _names = new List<string>()
         {
             Language.GetTextValue("Mods.Endgame.ZeerckName"),
@@ -76,7 +74,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override string TownNPCName()
         {
-            return _npcName = _names[WorldGen.genRand.Next(_names.Count)];
+            return _names[WorldGen.genRand.Next(_names.Count)];
         }
 
         public override void NPCLoot()
