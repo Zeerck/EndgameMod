@@ -13,8 +13,7 @@ namespace Endgame
         public static bool SudarinSpawn = false;
         public static bool DurthuSpawn = false;
         public static bool foundHomeAnarchist = false;
-        public static bool conspektyReturned = false;
-        public static bool GreenManSpawn = false;
+        public static bool conspectusReturned = false;
 
         public override void Initialize()
         {
@@ -23,8 +22,7 @@ namespace Endgame
             SudarinSpawn = false;
             DurthuSpawn = false;
             foundHomeAnarchist = false;
-            conspektyReturned = false;
-            GreenManSpawn = false;
+            conspectusReturned = false;
         }
 
         public override TagCompound Save()

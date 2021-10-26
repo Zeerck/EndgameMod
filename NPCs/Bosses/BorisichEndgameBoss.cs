@@ -12,14 +12,15 @@ namespace Endgame.NPCs.Bosses
     [AutoloadBossHead]
     public class BorisichEndgameBoss : ModNPC
     {
-        private int ai;
-        private int attackTimer = 0;
-        private bool fastSpeed = false;
-        private bool stunned;
-        private int stunnedTimer;
+        private int _ai;
+        private int _attackTimer = 0;
+        private bool _fastSpeed = false;
+        private bool _stunned;
+        private int _stunnedTimer;
+        private int _playerDead = 0;
 
-        private int frame = 0;
-        private double counting;
+        private int _frame = 0;
+        private double _counting;
 
         public override void SetStaticDefaults()
         {
@@ -67,7 +68,7 @@ namespace Endgame.NPCs.Bosses
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            Main.PlaySound(mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"), Main.LocalPlayer.position);
+            Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
@@ -79,7 +80,6 @@ namespace Endgame.NPCs.Bosses
         public override void AI()
         {
             npc.HitSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_DOS");
-
             npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
@@ -93,6 +93,12 @@ namespace Endgame.NPCs.Bosses
 
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
+                if (_playerDead == 0)
+                {
+                    Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_vot_i_vsya_prog"));
+                    _playerDead++;
+                }
+
                 npc.TargetClosest(false);
                 npc.direction = 1;
                 npc.velocity.Y = npc.velocity.Y - 0.1f;
@@ -104,36 +110,36 @@ namespace Endgame.NPCs.Bosses
                 }
             }
 
-            if (stunned)
+            if (_stunned)
             {
                 npc.velocity.X = 0.0f;
                 npc.velocity.Y = 0.0f;
 
-                stunnedTimer++;
+                _stunnedTimer++;
 
-                if (stunnedTimer >= 100)
+                if (_stunnedTimer >= 100)
                 {
-                    stunned = false;
-                    stunnedTimer = 0;
+                    _stunned = false;
+                    _stunnedTimer = 0;
                 }
             }
 
-            ai++;
+            _ai++;
 
-            npc.ai[0] = ai * 1f;
+            npc.ai[0] = _ai * 1f;
             int distance = (int)Vector2.Distance(target, npc.Center);
 
             if (npc.ai[0] < 300)
             {
-                frame = 0;
+                _frame = 0;
                 MoveTowards(npc, target, distance > 300 ? 13f : 7f, 30f);
                 npc.netUpdate = true;
             }
 
             else if (npc.ai[0] >= 350 && npc.ai[0] < 450.0)
             {
-                stunned = true;
-                frame = 1;
+                _stunned = true;
+                _frame = 1;
                 npc.defense = 40;
                 npc.damage = 42;
                 MoveTowards(npc, target, distance > 300 ? 13f : 7f, 30f);
@@ -142,14 +148,14 @@ namespace Endgame.NPCs.Bosses
 
             else if (npc.ai[0] >= 450.0)
             {
-                frame = 2;
-                stunned = false;
+                _frame = 2;
+                _stunned = false;
                 npc.damage = 100;
                 npc.defense = 15;
 
-                if (!fastSpeed)
+                if (!_fastSpeed)
                 {
-                    fastSpeed = true;
+                    _fastSpeed = true;
                 }
                 else
                 {
@@ -168,13 +174,13 @@ namespace Endgame.NPCs.Bosses
                 npc.netUpdate = true;
             }
 
-            if (npc.ai[0] % (Main.expertMode ? 100 : 150) == 0 && !stunned && !fastSpeed)
+            if (npc.ai[0] % (Main.expertMode ? 100 : 150) == 0 && !_stunned && !_fastSpeed)
             {
-                attackTimer++;
+                _attackTimer++;
 
-                if (attackTimer <= 2)
+                if (_attackTimer <= 2)
                 {
-                    frame = 2;
+                    _frame = 2;
                     npc.velocity.X = 0f;
                     npc.velocity.Y = 0f;
 
@@ -191,46 +197,46 @@ namespace Endgame.NPCs.Bosses
                 }
                 else
                 {
-                    attackTimer = 0;
+                    _attackTimer = 0;
                 }
             }
 
             if (npc.ai[0] >= 650.0)
             {
-                ai = 0;
+                _ai = 0;
                 npc.alpha = 0;
-                fastSpeed = false;
+                _fastSpeed = false;
             }
         }
 
         public override void FindFrame(int frameHeight)
         {
-            if (frame == 0)
+            if (_frame == 0)
             {
-                counting += 1.0;
+                _counting += 1.0;
 
-                if (counting < 8.0)
+                if (_counting < 8.0)
                 {
                     npc.frame.Y = 0;
                 }
-                else if (counting < 16.0)
+                else if (_counting < 16.0)
                 {
                     npc.frame.Y = frameHeight;
                 }
-                else if (counting < 24.0)
+                else if (_counting < 24.0)
                 {
                     npc.frame.Y = frameHeight * 2;
                 }
-                else if (counting < 32.0)
+                else if (_counting < 32.0)
                 {
                     npc.frame.Y = frameHeight * 3;
                 }
                 else
                 {
-                    counting = 0;
+                    _counting = 0;
                 }
             }
-            else if (frame == 1)
+            else if (_frame == 1)
             {
                 npc.frame.Y = frameHeight * 4;
             }
@@ -268,12 +274,13 @@ namespace Endgame.NPCs.Bosses
 
         public override void BossLoot(ref string name, ref int potionType)
         {
+            Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_mozhno_ne_pisat"));
+
             EndgameDropper.DropItemChance(npc, ModContent.ItemType<Items.AssemblerTrophy>(), 10, 1, 0);
 
-            if (EndgameWorld.GreenManSpawn == false)
+            if (EndgameWorld.borisichDefeated == false)
             {
-                EndgameDropper.DropItemCondition(npc, ModContent.ItemType<Items.TanosFigure>(), true, !EndgameWorld.borisichDefeated);
-                EndgameWorld.GreenManSpawn = true;
+                EndgameDropper.DropItem(npc, ModContent.ItemType<Items.TanosFigure>());
             }
 
             EndgameDropper.DropItem(npc, ModContent.ItemType<Items.Bags.BorisichBag>());

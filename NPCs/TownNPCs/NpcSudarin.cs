@@ -9,6 +9,9 @@ namespace Endgame.NPCs.TownNPCs
     [AutoloadHead]
     class NpcSudarin : ModNPC
     {
+        private string _durthuNpcName;
+        private string _zeerckNpcName;
+
         private static readonly List<string> _names = new List<string>()
         {
             Language.GetTextValue("Mods.Endgame.SudarinName"),
@@ -82,19 +85,25 @@ namespace Endgame.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            string DurthuNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
-            string ZeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
+            if (EndgameWorld.DurthuSpawn)
+                _durthuNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
+            if (EndgameWorld.ZeerckSpawn)
+                _zeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
             List<string> chatList = new List<string>();
 
-            chatList.Add(DurthuNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText1"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText2"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3") + ZeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText31"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText4"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText5"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText6"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText7"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText8"));
+
+            if (EndgameWorld.DurthuSpawn)
+                chatList.Add(_durthuNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText1"));
+
+            if (EndgameWorld.ZeerckSpawn)
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText31"));
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()))
             {

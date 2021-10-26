@@ -9,6 +9,10 @@ namespace Endgame.NPCs.TownNPCs
     [AutoloadHead]
     public class NpcDurthu : ModNPC
     {
+        private string _durthuNpcName;
+        private string _sudarinNpcName;
+        private string _zeerckNpcName;
+
         private static readonly List<string> _names = new List<string>()
         {
             Language.GetTextValue("Mods.Endgame.DurthuName"),
@@ -81,18 +85,20 @@ namespace Endgame.NPCs.TownNPCs
 
         public override string GetChat()
         {
-            string DurthuNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
-            string SudarinNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcSudarin>())].GivenName;
-            string ZeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
+            if (EndgameWorld.DurthuSpawn)
+                _durthuNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
+            if (EndgameWorld.SudarinSpawn)
+                _sudarinNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcSudarin>())].GivenName;
+            if (EndgameWorld.ZeerckSpawn)
+                _zeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
             List<string> chatList = new List<string>();
 
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText1"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText2"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText3"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText4") + ZeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuText41"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText5"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText6") + DurthuNpcName);
+            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText6") + _durthuNpcName);
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText7"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText8"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText9"));
@@ -100,14 +106,17 @@ namespace Endgame.NPCs.TownNPCs
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText11"));
             chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText12"));
 
+            if (EndgameWorld.ZeerckSpawn)
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText4") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuText41"));
+
             if (!Main.dayTime && Main.bloodMoon)
             {
                 chatList.Add("Mods.Endgame.NpcDurthuTextBloodMoon");
             }
 
-            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgamePlayer.ConspectusReader)
+            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgamePlayer.ConspectusReader && EndgameWorld.SudarinSpawn)
             {
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1") + SudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus12"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1") + _sudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus12"));
             }
 
             return chatList[Main.rand.Next(chatList.Count)];
