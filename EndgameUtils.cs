@@ -93,13 +93,13 @@ namespace Endgame
             });
         }
 
-        public static async void PlayCustomLocalDelaySound(Mod mod, string path, int delay)
+        public static async void PlayCustomLocalDelaySound(Mod mod, Vector2 position, string path, int delay)
         {
             await Task.Run(() =>
             {
                 Thread.Sleep(delay);
 
-                Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, path));
+                Main.PlaySound((int)SoundType.Custom, position, mod.GetSoundSlot(SoundType.Custom, path));
             });
         }
 

@@ -6,8 +6,6 @@ using Terraria.ModLoader;
 using Endgame.NPCs.TownNPCs;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
-using System.Threading.Tasks;
-using System.Threading;
 
 namespace Endgame.NPCs.Bosses
 {
@@ -19,7 +17,8 @@ namespace Endgame.NPCs.Bosses
         private bool _fastSpeed = false;
         private bool _stunned;
         private int _stunnedTimer;
-        private int _playerDead = 0;
+        private bool _playerDead = false;
+        private bool _noHighDefence = false;
 
         private int _frame = 0;
         private double _counting;
@@ -68,16 +67,22 @@ namespace Endgame.NPCs.Bosses
             bossBag = ModContent.ItemType<Items.Bags.BorisichBag>();
         }
 
-        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
-        {
-            Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
-        }
-
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
             npc.damage = (int)(npc.damage + 1.3f);
         }
+
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
+        {
+            Main.PlaySound(type: 50, npc.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
+        }
+
+        public override void OnHitPlayer(Player target, int damage, bool crit)
+        {
+            Main.PlaySound(type: 50, npc.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
+        }
+
 
         public override void AI()
         {
@@ -95,11 +100,13 @@ namespace Endgame.NPCs.Bosses
 
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
-                if (_playerDead == 0)
+                _noHighDefence = false;
+
+                if (!_playerDead)
                 {
-                    Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_vot_i_vsya_prog"));
+                    EndgameUtils.PlayCustomLocalDelaySound(mod, Main.LocalPlayer.position, "Sounds/Custom/Borisich_vot_i_vsya_prog", 5000);
                     EndgameUtils.DisplayDelayLocalizedText("Mods.Endgame.BorisichBossText2", 5000);
-                    _playerDead++;
+                    _playerDead = true;
                 }
 
                 npc.TargetClosest(false);
@@ -141,9 +148,15 @@ namespace Endgame.NPCs.Bosses
 
             else if (npc.ai[0] >= 350 && npc.ai[0] < 450.0)
             {
+                if(!_noHighDefence)
+                {
+                    EndgameUtils.PlayCustomLocalDelaySound(mod, npc.position, "Sounds/Custom/Borisich_ne_schitaetsa", 500);
+                    _noHighDefence = true;
+                }
+
                 _stunned = true;
                 _frame = 1;
-                npc.defense = 40;
+                npc.defense = 99999999;
                 npc.damage = 42;
                 MoveTowards(npc, target, distance > 300 ? 13f : 7f, 30f);
                 npc.netUpdate = true;
@@ -151,6 +164,7 @@ namespace Endgame.NPCs.Bosses
 
             else if (npc.ai[0] >= 450.0)
             {
+                _noHighDefence = false;
                 _frame = 2;
                 _stunned = false;
                 npc.damage = 100;
@@ -277,7 +291,7 @@ namespace Endgame.NPCs.Bosses
 
         public override void BossLoot(ref string name, ref int potionType)
         {
-            Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_mozhno_ne_pisat"));
+            Main.PlaySound(type: 50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_mozhno_ne_pisat"));
 
             EndgameDropper.DropItemChance(npc, ModContent.ItemType<Items.AssemblerTrophy>(), 10, 1, 0);
 

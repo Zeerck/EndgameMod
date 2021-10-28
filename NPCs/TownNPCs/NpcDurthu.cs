@@ -137,7 +137,7 @@ namespace Endgame.NPCs.TownNPCs
                 EndgameDropper.DropItem(npc, ModContent.ItemType<Items.AssemblerTrophy>());
             else if(EndgameWorld.conspectusReturned)
             {
-                EndgameUtils.PlayCustomLocalDelaySound(mod, "Sounds/Custom/Yarik_beautiful", 500);
+                EndgameUtils.PlayCustomLocalDelaySound(mod, Main.LocalPlayer.position,"Sounds/Custom/Yarik_beautiful", 500);
                 EndgameUtils.DisplayLocalizedText(Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName + Language.GetTextValue("Mods.Endgame.ForgetConspectus"), Colors.RarityGreen);
                 Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.DeathReason2") + Main.LocalPlayer.name + Language.GetTextValue("Mods.Endgame.DeathReason21")), Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
                 EndgameWorld.conspectusReturned = false;
