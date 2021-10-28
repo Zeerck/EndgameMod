@@ -3,6 +3,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 using System.Collections.Generic;
+using Terraria.DataStructures;
 
 namespace Endgame.NPCs.TownNPCs
 {
@@ -111,10 +112,10 @@ namespace Endgame.NPCs.TownNPCs
 
             if (!Main.dayTime && Main.bloodMoon)
             {
-                chatList.Add("Mods.Endgame.NpcDurthuTextBloodMoon");
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextBloodMoon"));
             }
 
-            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgamePlayer.ConspectusReader && EndgameWorld.SudarinSpawn)
+            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned && EndgameWorld.SudarinSpawn)
             {
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1") + _sudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus12"));
             }
@@ -125,11 +126,22 @@ namespace Endgame.NPCs.TownNPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("Mods.Endgame.NpcDurthuTextButton");
+
+            if(EndgameWorld.conspectusReturned)
+                button2 = Language.GetTextValue("Mods.Endgame.NpcDurthuTextButton2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
-            EndgameDropper.DropItem(npc, ModContent.ItemType<Items.AssemblerTrophy>());
+            if(firstButton)
+                EndgameDropper.DropItem(npc, ModContent.ItemType<Items.AssemblerTrophy>());
+            else if(EndgameWorld.conspectusReturned)
+            {
+                EndgameUtils.PlayCustomLocalDelaySound(mod, "Sounds/Custom/Yarik_beautiful", 500);
+                EndgameUtils.DisplayLocalizedText(Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName + Language.GetTextValue("Mods.Endgame.ForgetConspectus"), Colors.RarityGreen);
+                Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.DeathReason2") + Main.LocalPlayer.name + Language.GetTextValue("Mods.Endgame.DeathReason21")), Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
+                EndgameWorld.conspectusReturned = false;
+            }
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;

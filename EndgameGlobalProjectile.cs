@@ -22,6 +22,7 @@ namespace Endgame
             SpriteEffects effects1 = SpriteEffects.None;
             if (projectile.spriteDirection == -1)
                 effects1 = SpriteEffects.FlipHorizontally;
+
             if (EndgameConfig.Instance.Afterimages)
             {
                 Vector2 vector2 = drawCentered ? projectile.Size / 2f : Vector2.Zero;

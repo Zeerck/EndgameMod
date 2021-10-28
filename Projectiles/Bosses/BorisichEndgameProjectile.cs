@@ -22,7 +22,10 @@ namespace Endgame.Projectiles.Bosses
         {
             projectile.width = 20;
             projectile.height = 20;
+
+            projectile.friendly = false; //I'm trying to fix this in order for damage NPCs
             projectile.hostile = true;
+
             projectile.ignoreWater = true;
             projectile.tileCollide = false;
             projectile.alpha = byte.MaxValue;

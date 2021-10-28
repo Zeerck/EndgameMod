@@ -6,6 +6,8 @@ using Terraria.ModLoader;
 using Endgame.NPCs.TownNPCs;
 using Microsoft.Xna.Framework;
 using Terraria.Localization;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Endgame.NPCs.Bosses
 {
@@ -96,6 +98,7 @@ namespace Endgame.NPCs.Bosses
                 if (_playerDead == 0)
                 {
                     Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_vot_i_vsya_prog"));
+                    EndgameUtils.DisplayDelayLocalizedText("Mods.Endgame.BorisichBossText2", 5000);
                     _playerDead++;
                 }
 

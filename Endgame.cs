@@ -4,5 +4,6 @@ namespace Endgame
 {
 	public class Endgame : Mod
 	{
+		internal static Endgame instance;
 	}
 }

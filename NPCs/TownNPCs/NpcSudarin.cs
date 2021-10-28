@@ -105,7 +105,7 @@ namespace Endgame.NPCs.TownNPCs
             if (EndgameWorld.ZeerckSpawn)
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText31"));
 
-            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()))
+            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
             {
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinTextConspectus"));
             }
@@ -116,11 +116,27 @@ namespace Endgame.NPCs.TownNPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("Mods.Endgame.NpcSudarinTextButton");
+
+            if (EndgameWorld.SudarinSpawn && Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
+            {
+                button2 = Language.GetTextValue("Mods.Endgame.NpcSudarinTextButton2");
+            }
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
-            EndgameDropper.DropItem(npc, ModContent.ItemType<Items.TanosFigure>());
+            if (firstButton)
+            {
+                EndgameDropper.DropItem(npc, ModContent.ItemType<Items.TanosFigure>());
+            }
+            else if (Main.LocalPlayer.InventoryHas(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
+            {
+                Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Sudarin_AHCHO"));
+                Main.LocalPlayer.ConsumeItem(ModContent.ItemType<Items.Conspectus>());
+                EndgameWorld.conspectusReturned = true;
+                EndgameUtils.DisplayLocalizedText("AH CHOOOOO!", Colors.RarityBlue);
+                EndgameUtils.AhChooKill();
+            }
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;

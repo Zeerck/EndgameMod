@@ -1,21 +1,15 @@
-﻿using Terraria;
-using Terraria.ModLoader;
+﻿using Terraria.ModLoader;
 
 namespace Endgame
 {
     public class EndgamePlayer : ModPlayer
     {
-        public static bool TheOneWhoCould;
-        public static bool ConspectusReader;
+        //public static bool TheOneWhoCould;
 
         public override void ResetEffects()
         {
-            TheOneWhoCould = false;
-        }
-
-        public override void UpdateDead()
-        {
-            TheOneWhoCould = false;
+            if (EndgameWorld.conspectusReturned)
+                player.AddBuff(ModContent.BuffType<Buffs.WhoWroteEverythingBuff>(), 10);
         }
     }
 }
