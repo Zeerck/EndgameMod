@@ -9,7 +9,7 @@ namespace Endgame
         public override void ResetEffects()
         {
             if (EndgameWorld.conspectusReturned)
-                player.AddBuff(ModContent.BuffType<Buffs.WhoWroteEverythingBuff>(), 10);
+                player.AddBuff(ModContent.BuffType<Buffs.WhoWroteEverythingBuff>(), 1000);
         }
     }
 }

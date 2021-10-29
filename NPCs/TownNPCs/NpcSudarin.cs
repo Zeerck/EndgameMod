@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.Localization;
+
+using System.Collections.Generic;
 
 namespace Endgame.NPCs.TownNPCs
 {
@@ -12,7 +13,7 @@ namespace Endgame.NPCs.TownNPCs
         private string _durthuNpcName;
         private string _zeerckNpcName;
 
-        private static readonly List<string> _names = new List<string>()
+        private readonly List<string> _names = new List<string>()
         {
             Language.GetTextValue("Mods.Endgame.SudarinName"),
             Language.GetTextValue("Mods.Endgame.SuadrinName"),
@@ -23,30 +24,36 @@ namespace Endgame.NPCs.TownNPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Lord Pepegon");
+
             Main.npcFrameCount[npc.type] = 23;
+
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 60;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
             NPCID.Sets.DangerDetectRange[npc.type] = 500;
-            NPCID.Sets.AttackType[npc.type] = 0;
-            NPCID.Sets.AttackTime[npc.type] = 60;
             NPCID.Sets.AttackAverageChance[npc.type] = 10;
         }
 
         public override void SetDefaults()
         {
+            npc.width = 18;
+            npc.height = 44;
+
             npc.townNPC = true;
             npc.friendly = true;
             npc.lavaImmune = false;
-            npc.width = 18;
-            npc.height = 44;
+
             npc.aiStyle = 7;
+            animationType = 208;
+
             npc.damage = 10;
             npc.defense = 15;
             npc.lifeMax = 250;
+            npc.knockBackResist = 0.5f;
+
             npc.HitSound = SoundID.NPCHit1;
             npc.DeathSound = SoundID.NPCDeath1;
-            npc.knockBackResist = 0.5f;
-            animationType = 208;
         }
 
         public override void AI()
@@ -56,31 +63,14 @@ namespace Endgame.NPCs.TownNPCs
             EndgameWorld.SudarinSpawn = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-        {
-            for (int index = 0; index < byte.MaxValue; ++index)
-            {
-                Player player = Main.player[index];
-                int num;
-                if (!player.InventoryHas(74))
-                    num = player.PortableStorageHas(74) ? 1 : 0;
-                else
-                    num = 1;
-                bool flag = num != 0;
-                if (player.active & flag)
-                    return EndgameWorld.SudarinSpawn;
-            }
-            return EndgameWorld.SudarinSpawn;
-        }
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money) => EndgameUtils.TownNpcSpawn();
 
-        public override string TownNPCName()
-        {
-            return _names[WorldGen.genRand.Next(_names.Count)];
-        }
+        public override string TownNPCName() => _names[WorldGen.genRand.Next(_names.Count)];
 
         public override void NPCLoot()
         {
-            EndgameWorld.SudarinSpawn = false;
+            if (EndgameWorld.SudarinSpawn)
+                EndgameWorld.SudarinSpawn = false;
         }
 
         public override string GetChat()
@@ -90,14 +80,15 @@ namespace Endgame.NPCs.TownNPCs
             if (EndgameWorld.ZeerckSpawn)
                 _zeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
-            List<string> chatList = new List<string>();
-
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText2"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText4"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText5"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText6"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText7"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText8"));
+            List<string> chatList = new List<string>
+            {
+                Language.GetTextValue("Mods.Endgame.NpcSudarinText2"),
+                Language.GetTextValue("Mods.Endgame.NpcSudarinText4"),
+                Language.GetTextValue("Mods.Endgame.NpcSudarinText5"),
+                Language.GetTextValue("Mods.Endgame.NpcSudarinText6"),
+                Language.GetTextValue("Mods.Endgame.NpcSudarinText7"),
+                Language.GetTextValue("Mods.Endgame.NpcSudarinText8")
+            };
 
             if (EndgameWorld.DurthuSpawn)
                 chatList.Add(_durthuNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText1"));
@@ -106,9 +97,7 @@ namespace Endgame.NPCs.TownNPCs
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText31"));
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
-            {
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinTextConspectus"));
-            }
 
             return chatList[Main.rand.Next(chatList.Count)];
         }
@@ -118,17 +107,13 @@ namespace Endgame.NPCs.TownNPCs
             button = Language.GetTextValue("Mods.Endgame.NpcSudarinTextButton");
 
             if (EndgameWorld.SudarinSpawn && Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
-            {
                 button2 = Language.GetTextValue("Mods.Endgame.NpcSudarinTextButton2");
-            }
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
             if (firstButton)
-            {
                 EndgameDropper.DropItem(npc, ModContent.ItemType<Items.TanosFigure>());
-            }
             else if (Main.LocalPlayer.InventoryHas(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
             {
                 Main.PlaySound(50, Main.LocalPlayer.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Sudarin_AHCHO"));
@@ -159,10 +144,7 @@ namespace Endgame.NPCs.TownNPCs
             attackDelay = 1;
         }
 
-        public override void TownNPCAttackProjSpeed(
-          ref float multiplier,
-          ref float gravityCorrection,
-          ref float randomOffset)
+        public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
             multiplier = 2f;
         }

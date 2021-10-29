@@ -2,8 +2,9 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
-using System.Collections.Generic;
 using Terraria.DataStructures;
+
+using System.Collections.Generic;
 
 namespace Endgame.NPCs.TownNPCs
 {
@@ -14,7 +15,7 @@ namespace Endgame.NPCs.TownNPCs
         private string _sudarinNpcName;
         private string _zeerckNpcName;
 
-        private static readonly List<string> _names = new List<string>()
+        private readonly List<string> _names = new List<string>()
         {
             Language.GetTextValue("Mods.Endgame.DurthuName"),
             Language.GetTextValue("Mods.Endgame.ComradeGruzoffName"),
@@ -24,30 +25,36 @@ namespace Endgame.NPCs.TownNPCs
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Father of all Milfs");
+
             Main.npcFrameCount[npc.type] = 23;
+
+            NPCID.Sets.AttackType[npc.type] = 0;
+            NPCID.Sets.AttackTime[npc.type] = 60;
             NPCID.Sets.ExtraFramesCount[npc.type] = 9;
             NPCID.Sets.AttackFrameCount[npc.type] = 4;
             NPCID.Sets.DangerDetectRange[npc.type] = 500;
-            NPCID.Sets.AttackType[npc.type] = 0;
-            NPCID.Sets.AttackTime[npc.type] = 60;
             NPCID.Sets.AttackAverageChance[npc.type] = 10;
         }
 
         public override void SetDefaults()
         {
+            npc.width = 18;
+            npc.height = 44;
+
             npc.townNPC = true;
             npc.friendly = true;
             npc.lavaImmune = false;
-            npc.width = 18;
-            npc.height = 44;
+
             npc.aiStyle = 7;
+            animationType = 208;
+
             npc.damage = 10;
             npc.defense = 15;
             npc.lifeMax = 250;
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
             npc.knockBackResist = 0.5f;
-            animationType = 208;
+
+            npc.HitSound = SoundID.NPCHit1;
+            npc.DeathSound = SoundID.NPCDeath2;
         }
 
         public override void AI()
@@ -57,31 +64,14 @@ namespace Endgame.NPCs.TownNPCs
             EndgameWorld.DurthuSpawn = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
-        {
-            for (int index = 0; index < byte.MaxValue; ++index)
-            {
-                Player player = Main.player[index];
-                int num;
-                if (!player.InventoryHas(74))
-                    num = player.PortableStorageHas(74) ? 1 : 0;
-                else
-                    num = 1;
-                bool flag = num != 0;
-                if (player.active & flag)
-                    return EndgameWorld.DurthuSpawn;
-            }
-            return EndgameWorld.DurthuSpawn;
-        }
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money) => EndgameUtils.TownNpcSpawn();
 
-        public override string TownNPCName()
-        {
-            return _names[WorldGen.genRand.Next(_names.Count)];
-        }
+        public override string TownNPCName() => _names[WorldGen.genRand.Next(_names.Count)];
 
         public override void NPCLoot()
         {
-            EndgameWorld.DurthuSpawn = false;
+            if(EndgameWorld.DurthuSpawn)
+                EndgameWorld.DurthuSpawn = false;
         }
 
         public override string GetChat()
@@ -93,32 +83,29 @@ namespace Endgame.NPCs.TownNPCs
             if (EndgameWorld.ZeerckSpawn)
                 _zeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
-            List<string> chatList = new List<string>();
-
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText1"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText2"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText3"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText5"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText6") + _durthuNpcName);
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText7"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText8"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText9"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText10"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText11"));
-            chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText12"));
+            List<string> chatList = new List<string>
+            {
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText1"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText2"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText3"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText5"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText6") + _durthuNpcName,
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText7"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText8"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText9"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText10"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText11"),
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText12")
+            };
 
             if (EndgameWorld.ZeerckSpawn)
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText4") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuText41"));
 
             if (!Main.dayTime && Main.bloodMoon)
-            {
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextBloodMoon"));
-            }
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned && EndgameWorld.SudarinSpawn)
-            {
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1") + _sudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus12"));
-            }
 
             return chatList[Main.rand.Next(chatList.Count)];
         }
@@ -165,7 +152,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void TownNPCAttackProjSpeed(ref float multiplier, ref float gravityCorrection, ref float randomOffset)
         {
-            multiplier = 2f;
+            multiplier = 4f;
         }
     }
 }

@@ -1,16 +1,17 @@
-﻿using Terraria;
-using System.Linq;
+﻿using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+
+using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
 using Terraria.Localization;
-using System.Threading.Tasks;
-using System.Threading;
 using Terraria.DataStructures;
-using System.IO;
+
+using Microsoft.Xna.Framework;
 
 namespace Endgame
 {
@@ -21,12 +22,14 @@ namespace Endgame
         public static bool PortableStorageHas(this Player player, params int[] items)
         {
             bool flag = false;
+
             if (((IEnumerable<Item>)player.bank.item).Any(item => ((IEnumerable<int>)items).Contains(item.type)))
                 flag = true;
             if (((IEnumerable<Item>)player.bank2.item).Any(item => ((IEnumerable<int>)items).Contains(item.type)))
                 flag = true;
             if (((IEnumerable<Item>)player.bank3.item).Any(item => ((IEnumerable<int>)items).Contains(item.type)))
                 flag = true;
+
             return flag;
         }
 
@@ -53,15 +56,33 @@ namespace Endgame
             modTile.AddToArray(ref TileID.Sets.RoomNeeds.CountsAsChair);
         }
 
+        public static bool TownNpcSpawn()
+        {
+            for (int index = 0; index < byte.MaxValue; ++index)
+            {
+                int num;
+                Player player = Main.player[index];
+
+                if (!player.InventoryHas(74))
+                    num = player.PortableStorageHas(74) ? 1 : 0;
+                else
+                    num = 1;
+
+                bool flag = num != 0;
+
+                if (player.active & flag)
+                    return EndgameWorld.DurthuSpawn;
+            }
+            return EndgameWorld.DurthuSpawn;
+        }
+
         public static void DisplayLocalizedText(string key, Color? textColor = null)
         {
             if (!textColor.HasValue)
                 textColor = new Color?(Color.BlueViolet);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
-            {
                 Main.NewText(Language.GetTextValue(key), textColor.Value, false);
-            }
             else
             {
                 if (Main.netMode == NetmodeID.MultiplayerClient)
@@ -70,7 +91,6 @@ namespace Endgame
             }
         }
 
-        //huh, fuck this shit
         public async static void DisplayDelayLocalizedText(string key, int delay, Color? textColor = null)
         {
             await Task.Run(() =>
@@ -81,9 +101,7 @@ namespace Endgame
                     textColor = new Color?(Color.BlueViolet);
 
                 if (Main.netMode == NetmodeID.SinglePlayer)
-                {
                     Main.NewText(Language.GetTextValue(key), textColor.Value, false);
-                }
                 else
                 {
                     if (Main.netMode == NetmodeID.MultiplayerClient)

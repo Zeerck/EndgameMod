@@ -1,7 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.Localization;
 
 namespace Endgame.Items
 {
@@ -34,7 +34,7 @@ namespace Endgame.Items
             if (Main.netMode != NetmodeID.MultiplayerClient)
                 NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
             else
-                NetMessage.SendData(MessageID.SpawnBoss, number: player.whoAmI, number2: ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
+                NetMessage.SendData(MessageID.SpawnBoss, player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
 
             EndgameUtils.DisplayLocalizedText("Mods.Endgame.BorisichBossText1");
 

@@ -1,31 +1,37 @@
 ﻿using System;
-using Terraria;
 using System.IO;
+
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Endgame.NPCs.TownNPCs;
-using Microsoft.Xna.Framework;
 using Terraria.Localization;
+
+using Endgame.NPCs.TownNPCs;
+
+using Microsoft.Xna.Framework;
 
 namespace Endgame.NPCs.Bosses
 {
+    //TODO: Make Borisich AI smarter
     [AutoloadBossHead]
     public class BorisichEndgameBoss : ModNPC
     {
         private int _ai;
+        private int _frame = 0;
+        private int _stunnedTimer;
         private int _attackTimer = 0;
+
+        private bool _noHighDefence = false;
+        private bool _playerDead = false;
         private bool _fastSpeed = false;
         private bool _stunned;
-        private int _stunnedTimer;
-        private bool _playerDead = false;
-        private bool _noHighDefence = false;
 
-        private int _frame = 0;
         private double _counting;
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichBossName"));
+
             Main.npcFrameCount[npc.type] = 6;
             NPCID.Sets.TrailingMode[npc.type] = 1;
         }
@@ -46,62 +52,58 @@ namespace Endgame.NPCs.Bosses
 
             npc.value = Item.buyPrice(gold: 1);
 
+            npc.noGravity = true;
             npc.lavaImmune = true;
             npc.trapImmune = true;
             npc.noTileCollide = true;
-            npc.noGravity = true;
 
             npc.DeathSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_mozhno_ne_pisat");
-
-            Mod getMod = ModLoader.GetMod("CalamityModMusic");
-
-            if (getMod != null)
-            {
-                music = getMod.GetSoundSlot(SoundType.Music, "Sounds/Music/UniversalCollapse");
-            }
-            else
-            {
-                music = 5;
-            }
-
             bossBag = ModContent.ItemType<Items.Bags.BorisichBag>();
+
+            Mod musicMod = ModLoader.GetMod("CalamityModMusic");
+
+            if (musicMod != null)
+                music = musicMod.GetSoundSlot(SoundType.Music, "Sounds/Music/UniversalCollapse");
+            else
+                music = 5;
         }
 
         public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
-            npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
+            if (numPlayers > 1)
+                npc.lifeMax = (int)(npc.lifeMax * ((numPlayers * npc.lifeMax) / 1.5) * bossLifeScale);
+            else
+                npc.lifeMax = (int)(npc.lifeMax * bossLifeScale);
+
             npc.damage = (int)(npc.damage + 1.3f);
         }
 
         public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
-            Main.PlaySound(type: 50, npc.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
+            Main.PlaySound((int)SoundType.Custom, npc.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
         }
 
         public override void OnHitPlayer(Player target, int damage, bool crit)
         {
-            Main.PlaySound(type: 50, npc.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
+            Main.PlaySound((int)SoundType.Custom, npc.position, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_raz"));
         }
 
 
         public override void AI()
         {
-            npc.HitSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_DOS");
-            npc.TargetClosest(true);
             Player player = Main.player[npc.target];
             Vector2 target = npc.HasPlayerTarget ? player.Center : Main.npc[npc.target].Center;
 
             npc.rotation = 0.0f;
             npc.netAlways = true;
             npc.TargetClosest(true);
+            npc.HitSound = mod.GetLegacySoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_DOS");
 
             if (npc.life >= npc.lifeMax)
                 npc.life = npc.lifeMax;
 
             if (npc.target < 0 || npc.target == 255 || player.dead || !player.active)
             {
-                _noHighDefence = false;
-
                 if (!_playerDead)
                 {
                     EndgameUtils.PlayCustomLocalDelaySound(mod, Main.LocalPlayer.position, "Sounds/Custom/Borisich_vot_i_vsya_prog", 5000);
@@ -135,14 +137,14 @@ namespace Endgame.NPCs.Bosses
             }
 
             _ai++;
-
             npc.ai[0] = _ai * 1f;
+
             int distance = (int)Vector2.Distance(target, npc.Center);
 
             if (npc.ai[0] < 300)
             {
                 _frame = 0;
-                MoveTowards(npc, target, distance > 300 ? 13f : 7f, 30f);
+                MoveTowards(target, distance > 300 ? 13f : 7f, 30f);
                 npc.netUpdate = true;
             }
 
@@ -158,7 +160,7 @@ namespace Endgame.NPCs.Bosses
                 _frame = 1;
                 npc.defense = 99999999;
                 npc.damage = 42;
-                MoveTowards(npc, target, distance > 300 ? 13f : 7f, 30f);
+                MoveTowards(target, distance > 300 ? 13f : 7f, 30f);
                 npc.netUpdate = true;
             }
 
@@ -171,9 +173,7 @@ namespace Endgame.NPCs.Bosses
                 npc.defense = 15;
 
                 if (!_fastSpeed)
-                {
                     _fastSpeed = true;
-                }
                 else
                 {
                     if (npc.ai[0] % 50 == 0)
@@ -233,58 +233,35 @@ namespace Endgame.NPCs.Bosses
                 _counting += 1.0;
 
                 if (_counting < 8.0)
-                {
                     npc.frame.Y = 0;
-                }
                 else if (_counting < 16.0)
-                {
                     npc.frame.Y = frameHeight;
-                }
                 else if (_counting < 24.0)
-                {
                     npc.frame.Y = frameHeight * 2;
-                }
                 else if (_counting < 32.0)
-                {
                     npc.frame.Y = frameHeight * 3;
-                }
                 else
-                {
                     _counting = 0;
-                }
             }
             else if (_frame == 1)
-            {
                 npc.frame.Y = frameHeight * 4;
-            }
             else
-            {
                 npc.frame.Y = frameHeight * 5;
-            }
         }
 
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            base.ReceiveExtraAI(reader);
-        }
-
-        private void MoveTowards(NPC NPC, Vector2 playerTarget, float speed, float turnResistance)
+        private void MoveTowards(Vector2 playerTarget, float speed, float turnResistance)
         {
             var move = playerTarget - npc.Center;
             float lenght = move.Length();
 
             if (lenght > speed)
-            {
                 move *= speed / lenght;
-            }
 
             move = (npc.velocity * turnResistance + move) / (turnResistance + 1f);
             lenght = move.Length();
 
             if (lenght > speed)
-            {
                 move *= speed / lenght;
-            }
 
             npc.velocity = move;
         }
@@ -296,17 +273,15 @@ namespace Endgame.NPCs.Bosses
             EndgameDropper.DropItemChance(npc, ModContent.ItemType<Items.AssemblerTrophy>(), 10, 1, 0);
 
             if (EndgameWorld.borisichDefeated == false)
-            {
                 EndgameDropper.DropItem(npc, ModContent.ItemType<Items.TanosFigure>());
-            }
-
-            EndgameDropper.DropItem(npc, ModContent.ItemType<Items.Bags.BorisichBag>());
 
             if (!Main.expertMode)
             {
                 EndgameDropper.DropItem(npc, 183, 20, 30);
                 EndgameDropper.DropItem(npc, 194, 3, 6);
             }
+            else
+                EndgameDropper.DropItem(npc, ModContent.ItemType<Items.Bags.BorisichBag>());
 
             if (EndgameWorld.DurthuSpawn == false)
             {

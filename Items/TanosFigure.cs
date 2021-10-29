@@ -1,7 +1,7 @@
 ﻿using Terraria.ID;
 using Terraria.ModLoader;
-using Endgame.Tiles.Decorative;
 using Terraria.Localization;
+using Endgame.Tiles.Decorative;
 
 namespace Endgame.Items
 {

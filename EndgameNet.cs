@@ -7,10 +7,13 @@ namespace Endgame
     {        
         public static void SyncWorld()
         {
-            if (Main.netMode != NetmodeID.Server)
+            if (Main.netMode == NetmodeID.SinglePlayer)
                 return;
+            else
+                NetMessage.SendData(MessageID.WorldData);
 
-            NetMessage.SendData(MessageID.WorldData);
+            //if (Main.netMode != NetmodeID.Server || Main.netMode != NetmodeID.MultiplayerClient)
+            //    return;
         }
     }
 }

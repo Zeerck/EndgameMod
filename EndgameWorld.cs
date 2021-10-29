@@ -8,29 +8,40 @@ namespace Endgame
 {
     class EndgameWorld : ModWorld
     {
-        public static bool borisichDefeated = false;
-        public static bool ZeerckSpawn = false;
-        public static bool SudarinSpawn = false;
         public static bool DurthuSpawn = false;
+        public static bool SudarinSpawn = false;
+        public static bool ZeerckSpawn = false;
+
         public static bool foundHomeAnarchist = false;
+        public static bool foundHomeLordPepegon = false;
+        public static bool foundHomeFatherOfAllMilfs = false;
+
         public static bool conspectusReturned = false;
+
+        public static bool borisichDefeated = false;
 
         public override void Initialize()
         {
-            borisichDefeated = false;
             ZeerckSpawn = false;
             SudarinSpawn = false;
             DurthuSpawn = false;
+
             foundHomeAnarchist = false;
+            foundHomeLordPepegon = false;
+            foundHomeFatherOfAllMilfs = false;
+
             conspectusReturned = false;
+
+            borisichDefeated = false;
         }
 
         public override TagCompound Save()
         {
             var Defeated = new List<string>();
-            if (borisichDefeated) Defeated.Add("borisich");
-
             TagCompound tagCompound = new TagCompound();
+
+            if (borisichDefeated)
+                Defeated.Add("borisich");
 
             return tagCompound;
         }

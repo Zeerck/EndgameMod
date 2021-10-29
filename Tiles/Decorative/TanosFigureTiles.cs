@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+
 using Microsoft.Xna.Framework;
 
 namespace Endgame.Tiles.Decorative
@@ -8,10 +9,13 @@ namespace Endgame.Tiles.Decorative
     {
         public override void SetDefaults()
         {
-            this.SetUpFigure();
             ModTranslation mapEntryName = CreateMapEntryName();
             mapEntryName.SetDefault("Tanos Figure");
+
+            this.SetUpFigure();
+
             AddMapEntry(new Color(191, 142, 111), mapEntryName);
+
             disableSmartCursor = true;
             adjTiles = new int[1] { 15 };
         }
