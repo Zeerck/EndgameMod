@@ -96,11 +96,17 @@ NpcSudarinTextButton=Получить Человечка
 NpcSudarinTextButton2=Вернуть Конспекты
 
 NpcZeerckTextButton=Получить Икону Святого Всепишущего
+NpcZeerckTextButton2=Получить Проклятье
 
 # Buffs
 
 WhoWroteEverythingBuffName=Тот кто всё писал...
 WhoWroteEverythingBuffDescription=Вы прочитали все конспекты, теперь вы едины с водой и невосприимчивы к огню.\nВы воплощение воды.
+
+# Debuffs
+
+StopTalkingDebuffName=Прекратите Разговаривать!
+StopTalkingDebuffDescription=Вы ничего не можете сделать!
 
 # Bags
 

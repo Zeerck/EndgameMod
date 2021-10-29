@@ -143,11 +143,15 @@ namespace Endgame.NPCs.TownNPCs
         public override void SetChatButtons(ref string button, ref string button2)
         {
             button = Language.GetTextValue("Mods.Endgame.NpcZeerckTextButton");
+            button2 = Language.GetTextValue("Mods.Endgame.NpcZeerckTextButton2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
-            EndgameDropper.DropItem(npc, ModContent.ItemType<Items.IconOfHolyAllWriting>());
+            if (firstButton)
+                EndgameDropper.DropItem(npc, ModContent.ItemType<Items.IconOfHolyAllWriting>());
+            else
+                Main.LocalPlayer.AddBuff(ModContent.BuffType<Buffs.StopTalkingDebuff>(), 350);
         }
 
         public override bool CanGoToStatue(bool toKingStatue) => !toKingStatue;

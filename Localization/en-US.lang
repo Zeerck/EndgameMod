@@ -94,11 +94,17 @@ NpcSudarinTextButton=Get Green Men
 NpcSudarinTextButton2=Return Conspectus
 
 NpcZeerckTextButton=Get Icon Of Holy All-Writer
+NpcZeerckTextButton2=Get Curse
 
 # Buffs
 
 WhoWroteEverythingBuffName=The one who wrote everything...
 WhoWroteEverythingBuffDescription=You have read all Conspectus, now you are one with water and are immune to fire.\nYou are the embodiment of water.
+
+# Debuffs
+
+StopTalkingDebuffName=Stop Talking!
+StopTalkingDebuffDescription=You can't do anything!
 
 # Bags
 
