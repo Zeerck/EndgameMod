@@ -24,12 +24,12 @@ namespace Endgame.Items
 
             item.maxStack = 1;
             item.rare = ItemRarityID.Pink;
-            item.consumable = true;
+            item.consumable = false;
         }
 
         public override bool UseItem(Player player)
         {
-            Main.PlaySound((int)SoundType.Custom, (int)player.position.X, (int)player.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_vi_to_genii"));
+            Main.PlaySound(SoundLoader.customSoundType, (int)player.position.X, (int)player.position.Y, mod.GetSoundSlot(SoundType.Custom, "Sounds/Custom/Borisich_vi_to_genii"));
 
             if (Main.netMode != NetmodeID.MultiplayerClient)
                 NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
@@ -39,6 +39,25 @@ namespace Endgame.Items
             EndgameUtils.DisplayLocalizedText("Mods.Endgame.BorisichBossText1");
 
             return true;
+        }
+
+        public override void AddRecipes()
+        {
+            ModRecipe recipe = new ModRecipe(mod);
+
+            recipe.AddIngredient(ModContent.ItemType<ProgramerSoul>(), 42000);
+            recipe.AddIngredient(ItemID.SoulofFlight, 42);
+            recipe.AddIngredient(ItemID.SoulofFright, 42);
+            recipe.AddIngredient(ItemID.SoulofLight, 42);
+            recipe.AddIngredient(ItemID.SoulofMight, 42);
+            recipe.AddIngredient(ItemID.SoulofNight, 42);
+            recipe.AddIngredient(ItemID.SoulofSight, 42);
+            recipe.AddIngredient(ItemID.PapyrusScarab, 1);
+            recipe.AddIngredient(ItemID.BlackInk, 3);
+            recipe.AddIngredient(ItemID.Feather, 1);
+            recipe.AddTile(TileID.DemonAltar);
+            recipe.SetResult(this);
+            recipe.AddRecipe();
         }
     }
 }
