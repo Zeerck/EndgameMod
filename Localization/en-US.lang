@@ -129,6 +129,9 @@ NanomachineDescription=Just Nanomachine... No more.
 GreenManName=The Green Man
 GreenManDescription=Ah, again, your little green mens...
 
+ProgramerSoulName=Piece of Programmer
+ProgramerSoulDescription=Each of us has a part of Programmer...
+
 # Bosses
 
 BorisichBossName=Borisich Endgame
@@ -154,3 +157,12 @@ DeathReason21= took advantage of this...
 # Display Texts
 
 ForgetConspectus= lightly clicked your forehead and you forgot the ancient knowledge...
+OldPowersOfAnarchizmText=The ancient forces of Anarchism were unleashed...
+
+# Mounts
+
+NanomachineMountDescription=I thought she was smaller...
+
+# Extra Quotes
+
+ExtraGuideQuote1=Do you know {0}? They say he is from another world. And he talked about hundreds of worlds like ours.
