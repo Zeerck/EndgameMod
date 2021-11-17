@@ -89,7 +89,7 @@ namespace Endgame.NPCs.TownNPCs
                 Language.GetTextValue("Mods.Endgame.NpcDurthuText2"),
                 Language.GetTextValue("Mods.Endgame.NpcDurthuText3"),
                 Language.GetTextValue("Mods.Endgame.NpcDurthuText5"),
-                Language.GetTextValue("Mods.Endgame.NpcDurthuText6") + _durthuNpcName,
+                Language.GetTextValue("Mods.Endgame.NpcDurthuText6", _durthuNpcName),
                 Language.GetTextValue("Mods.Endgame.NpcDurthuText7"),
                 Language.GetTextValue("Mods.Endgame.NpcDurthuText8"),
                 Language.GetTextValue("Mods.Endgame.NpcDurthuText9"),
@@ -99,13 +99,13 @@ namespace Endgame.NPCs.TownNPCs
             };
 
             if (EndgameWorld.ZeerckSpawn)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText4") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuText41"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuText4", _zeerckNpcName));
 
             if (!Main.dayTime && Main.bloodMoon)
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextBloodMoon"));
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned && EndgameWorld.SudarinSpawn)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1") + _sudarinNpcName + Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus12"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcDurthuTextConspectus1", _sudarinNpcName));
 
             return chatList[Main.rand.Next(chatList.Count)];
         }
@@ -125,7 +125,7 @@ namespace Endgame.NPCs.TownNPCs
             else if(EndgameWorld.conspectusReturned)
             {
                 EndgameUtils.PlayCustomLocalDelaySound(mod, Main.LocalPlayer.position,"Sounds/Custom/Yarik_beautiful", 500);
-                EndgameUtils.DisplayLocalizedText(Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName + Language.GetTextValue("Mods.Endgame.ForgetConspectus"), Colors.RarityGreen);
+                EndgameUtils.DisplayLocalizedText(Language.GetTextValue("Mods.Endgame.ForgetConspectus", Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName), Colors.RarityGreen);
                 Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.DeathReason2") + Main.LocalPlayer.name + Language.GetTextValue("Mods.Endgame.DeathReason21")), Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
                 EndgameWorld.conspectusReturned = false;
             }

@@ -91,10 +91,10 @@ namespace Endgame.NPCs.TownNPCs
             };
 
             if (EndgameWorld.DurthuSpawn)
-                chatList.Add(_durthuNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText1"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText1", _durthuNpcName));
 
             if (EndgameWorld.ZeerckSpawn)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3") + _zeerckNpcName + Language.GetTextValue("Mods.Endgame.NpcSudarinText31"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinText3", _zeerckNpcName));
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspectusReturned)
                 chatList.Add(Language.GetTextValue("Mods.Endgame.NpcSudarinTextConspectus"));
