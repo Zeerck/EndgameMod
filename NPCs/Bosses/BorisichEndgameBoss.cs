@@ -301,6 +301,8 @@ namespace Endgame.NPCs.Bosses
                 EndgameWorld.ZeerckSpawn = true;
             }
 
+            EndgameUtils.DisplayLocalizedText("Mods.Endgame.OldPowersOfAnarchizmText", Color.Lime);
+
             EndgameWorld.borisichDefeated = true;
             EndgameNet.SyncWorld();
         }
