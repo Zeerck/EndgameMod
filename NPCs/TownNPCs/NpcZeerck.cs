@@ -10,146 +10,171 @@ namespace Endgame.NPCs.TownNPCs
     [AutoloadHead]
     public class NpcZeerck : ModNPC
     {
-        private string _durthuNpcName;
-        private string _sudarinNpcName;
-        private string _zeerckNpcName;
+        private string _durthuNPCName;
+        private string _sudarinNPCName;
+        private string _zeerckNPCName;
 
         private static readonly List<string> _names = new List<string>()
         {
-            Language.GetTextValue("Mods.Endgame.ZeerckName"),
-            Language.GetTextValue("Mods.Endgame.ZeerckyName"),
-            Language.GetTextValue("Mods.Endgame.Zeer4eckName"),
-            Language.GetTextValue("Mods.Endgame.DmitrixName"),
-            Language.GetTextValue("Mods.Endgame.Dima800Name"),
-            Language.GetTextValue("Mods.Endgame.DipaName")
+            Language.GetTextValue("Mods.Endgame.Common.ZeerckName"),
+            Language.GetTextValue("Mods.Endgame.Common.ZeerckyName"),
+            Language.GetTextValue("Mods.Endgame.Common.Zeer4eckName"),
+            Language.GetTextValue("Mods.Endgame.Common.DmitrixName"),
+            Language.GetTextValue("Mods.Endgame.Common.Dima800Name"),
+            Language.GetTextValue("Mods.Endgame.Common.DipaName")
         };
 
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Anarchist");
 
-            Main.npcFrameCount[npc.type] = 23;
+            Main.npcFrameCount[NPC.type] = 23;
 
-            NPCID.Sets.AttackType[npc.type] = 0;
-            NPCID.Sets.AttackTime[npc.type] = 60;
-            NPCID.Sets.ExtraFramesCount[npc.type] = 9;
-            NPCID.Sets.AttackFrameCount[npc.type] = 4;
-            NPCID.Sets.DangerDetectRange[npc.type] = 500;
-            NPCID.Sets.AttackAverageChance[npc.type] = 10;
+            NPCID.Sets.AttackType[NPC.type] = 0;
+            NPCID.Sets.AttackTime[NPC.type] = 60;
+            NPCID.Sets.ExtraFramesCount[NPC.type] = 9;
+            NPCID.Sets.AttackFrameCount[NPC.type] = 4;
+            NPCID.Sets.DangerDetectRange[NPC.type] = 500;
+            NPCID.Sets.AttackAverageChance[NPC.type] = 10;
         }
 
         public override void SetDefaults()
         {
-            npc.width = 18;
-            npc.height = 44;
+            NPC.width = 18;
+            NPC.height = 44;
 
-            npc.townNPC = true;
-            npc.friendly = true;
-            npc.lavaImmune = false;
+            NPC.townNPC = true;
+            NPC.friendly = true;
+            NPC.lavaImmune = false;
 
-            npc.aiStyle = 7;
-            animationType = 208;
+            NPC.aiStyle = 7;
+            AnimationType = 208;
 
-            npc.damage = 10;
-            npc.defense = 15;
-            npc.lifeMax = 250;
-            npc.knockBackResist = 0.5f;
+            NPC.damage = 10;
+            NPC.defense = 15;
+            NPC.lifeMax = 250;
+            NPC.knockBackResist = 0.5f;
 
-            npc.HitSound = SoundID.NPCHit1;
-            npc.DeathSound = SoundID.NPCDeath1;
+            NPC.HitSound = SoundID.NPCHit1;
+            NPC.DeathSound = SoundID.NPCDeath1;
         }
 
         public override void AI()
         {
-            if (EndgameWorld.ZeerckSpawn)
+            if (EndgameWorld.ZeerckExist)
                 return;
-            EndgameWorld.ZeerckSpawn = true;
+            EndgameWorld.ZeerckExist = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money) => EndgameUtils.TownNpcSpawn();
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        {
+            for (int index = 0; index < byte.MaxValue; ++index)
+            {
+                Player player = Main.player[index];
+                int num;
+                if (!player.InventoryHas(74))
+                    num = player.PortableStorageHas(74) ? 1 : 0;
+                else
+                    num = 1;
+                bool flag = num != 0;
+                if (player.active & flag)
+                    return EndgameWorld.ZeerckExist;
+            }
+            return EndgameWorld.ZeerckExist;
+        }
 
         public override string TownNPCName() => _names[WorldGen.genRand.Next(_names.Count)];
 
-        public override void NPCLoot()
+        public override void ModifyNPCLoot(NPCLoot npcLoot)
         {
-            if (EndgameWorld.ZeerckSpawn)
-                EndgameWorld.ZeerckSpawn = false;
+            if (EndgameWorld.ZeerckExist)
+                EndgameWorld.ZeerckExist = false;
+        }
+
+        public override bool CheckDead()
+        {
+            if (EndgameWorld.ZeerckExist)
+                EndgameWorld.ZeerckExist = false;
+
+            return true;
         }
 
         public override string GetChat()
         {
-            if(EndgameWorld.DurthuSpawn)
-            _durthuNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
-            if(EndgameWorld.SudarinSpawn)
-            _sudarinNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcSudarin>())].GivenName;
-            if(EndgameWorld.ZeerckSpawn)
-            _zeerckNpcName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
+            if(EndgameWorld.DurthuExist)
+            _durthuNPCName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcDurthu>())].GivenName;
+            if(EndgameWorld.SudarinExist)
+            _sudarinNPCName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcSudarin>())].GivenName;
+            if(EndgameWorld.ZeerckExist)
+            _zeerckNPCName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
             List<string> chatList = new List<string>
             {
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText1"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText2"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText7"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText8"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText9"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText10"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText11"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText12"),
-                Language.GetTextValue("Mods.Endgame.NpcZeerckText13")
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText1"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText2"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText7"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText8"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText9"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText10"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText11"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText12"),
+                Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText13")
             };
 
-            if (EndgameWorld.SudarinSpawn)
+            if (EndgameWorld.SudarinExist)
             {
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText3", _sudarinNpcName));
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText4", _sudarinNpcName));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText3", _sudarinNPCName));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText4", _sudarinNPCName));
             }
 
-            if (EndgameWorld.DurthuSpawn)
+            if (EndgameWorld.DurthuExist)
             {
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText5", _durthuNpcName));
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckText6", _durthuNpcName));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText5", _durthuNPCName));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckText6", _durthuNPCName));
             }
 
             if (!Main.dayTime && !Main.bloodMoon)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckNightText"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckNightText"));
 
-            if (_zeerckNpcName == Language.GetTextValue("Mods.Endgame.ZeerckName"))
+            if (_zeerckNPCName == Language.GetTextValue("Mods.Endgame.Common.ZeerckName"))
             {
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeerckText1"));
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeerckText2"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToZeerckText1"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToZeerckText2"));
             }
 
-            if (_zeerckNpcName == Language.GetTextValue("Mods.Endgame.ZeerckyName"))
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeerckyText"));
+            if (_zeerckNPCName == Language.GetTextValue("Mods.Endgame.Common.ZeerckyName"))
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToZeerckyText"));
 
-            if (_zeerckNpcName == Language.GetTextValue("Mods.Endgame.Zeer4eckName"))
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToZeer4eckText"));
+            if (_zeerckNPCName == Language.GetTextValue("Mods.Endgame.Common.Zeer4eckName"))
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToZeer4eckText"));
 
-            if (_zeerckNpcName == Language.GetTextValue("Mods.Endgame.DmitrixName"))
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToDmitrixText"));
+            if (_zeerckNPCName == Language.GetTextValue("Mods.Endgame.Common.DmitrixName"))
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToDmitrixText"));
 
-            if (_zeerckNpcName == Language.GetTextValue("Mods.Endgame.Dima800Name"))
+            if (_zeerckNPCName == Language.GetTextValue("Mods.Endgame.Common.Dima800Name"))
             {
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToDima800Text1"));
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckToDima800Text2"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToDima800Text1"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckToDima800Text2"));
             }
 
-            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && EndgameWorld.SudarinSpawn)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.NpcZeerckTextConspectus", _sudarinNpcName));
+            if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && EndgameWorld.SudarinExist)
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCZeerckTextConspectus", _sudarinNPCName));
 
             return chatList[Main.rand.Next(chatList.Count)];
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = Language.GetTextValue("Mods.Endgame.NpcZeerckTextButton");
-            button2 = Language.GetTextValue("Mods.Endgame.NpcZeerckTextButton2");
+            button = Language.GetTextValue("Mods.Endgame.Common.NPCZeerckTextButton");
+            button2 = Language.GetTextValue("Mods.Endgame.Common.NPCZeerckTextButton2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
+            var source = NPC.GetItemSource_Loot();
+
             if (firstButton)
-                EndgameDropper.DropItem(npc, ModContent.ItemType<Items.IconOfHolyAllWriting>());
+                EndgameDropper.DropItem(source, NPC, ModContent.ItemType<Items.IconOfHolyAllWriting>());
             else
                 Main.LocalPlayer.AddBuff(ModContent.BuffType<Buffs.StopTalkingDebuff>(), 350);
         }
