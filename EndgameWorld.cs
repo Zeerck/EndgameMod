@@ -6,47 +6,23 @@ using System.IO;
 
 namespace Endgame
 {
-    class EndgameWorld : ModWorld
+    public class EndgameWorld : ModSystem
     {
-        public static bool DurthuSpawn = false;
-        public static bool SudarinSpawn = false;
-        public static bool ZeerckSpawn = false;
-
-        public static bool foundHomeAnarchist = false;
-        public static bool foundHomeLordPepegon = false;
-        public static bool foundHomeFatherOfAllMilfs = false;
-
-        public static bool conspectusReturned = false;
-
         public static bool borisichDefeated = false;
+        public static bool ZeerckExist = false;
+        public static bool SudarinExist = false;
+        public static bool DurthuExist = false;
+        public static bool foundHomeAnarchist = false;
+        public static bool conspektyReturned = false;
+        public static bool GreenManSpawn = false;
 
-        public override void Initialize()
-        {
-            ZeerckSpawn = false;
-            SudarinSpawn = false;
-            DurthuSpawn = false;
-
-            foundHomeAnarchist = false;
-            foundHomeLordPepegon = false;
-            foundHomeFatherOfAllMilfs = false;
-
-            conspectusReturned = false;
-
-            borisichDefeated = false;
-        }
-
-        public override TagCompound Save()
+        public override void SaveWorldData(TagCompound tag)
         {
             var Defeated = new List<string>();
-            TagCompound tagCompound = new TagCompound();
-
-            if (borisichDefeated)
-                Defeated.Add("borisich");
-
-            return tagCompound;
+            if (borisichDefeated) Defeated.Add("borisichBoss");
         }
 
-        public override void Load(TagCompound tag)
+        public override void LoadWorldData(TagCompound tag)
         {
             var Defeated = tag.GetList<string>("Defeated");
             borisichDefeated = Defeated.Contains("borisichBoss");

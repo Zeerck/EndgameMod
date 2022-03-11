@@ -8,17 +8,17 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.ConspectusName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.ConspectusDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ConspectusName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ConspectusDescription"));
         }
 
         public override void SetDefaults()
         {
-            item.width = 32;
-            item.height = 36;
-
-            item.maxStack = 1;
-            item.rare = ItemRarityID.Expert;
+            Item.width = 32;
+            Item.height = 36;
+            
+            Item.maxStack = 1;
+            Item.rare = ItemRarityID.Expert;
         }
     }
 }

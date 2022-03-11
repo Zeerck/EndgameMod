@@ -11,26 +11,28 @@ namespace Endgame.Items.Bags
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichBagName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.BorisichBagDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagDescription"));
         }
 
         public override void SetDefaults()
         {
-            item.width = 36;
-            item.height = 32;
+            Item.width = 36;
+            Item.height = 32;
             
-            item.maxStack = 999;
-            item.consumable = true;
-            item.rare = ItemRarityID.Cyan;
-            item.expert = true;
+            Item.maxStack = 999;
+            Item.consumable = true;
+            Item.rare = ItemRarityID.Cyan;
+            Item.expert = true;
         }
 
         public override void OpenBossBag(Player player)
         {
-            player.QuickSpawnItem(ItemID.GoldCoin, 42);
-            player.QuickSpawnItem(ItemID.WaterBucket, 42);
-            player.QuickSpawnItem(ModContent.ItemType<Conspectus>());
+            var source = player.GetItemSource_OpenItem(Type);
+
+            player.QuickSpawnItem(source, ItemID.GoldCoin, 42);
+            player.QuickSpawnItem(source, ItemID.WaterBucket, 42);
+            player.QuickSpawnItem(source, ModContent.ItemType<Conspectus>());
         }
     }
 }

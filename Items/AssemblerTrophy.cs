@@ -6,25 +6,25 @@ namespace Endgame.Items
 {
     public class AssemblerTrophy : ModItem
     {
-        public override void SetStaticDefaults() => DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.AssemblerVirtualMachineName"));
+        public override void SetStaticDefaults() => DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.AssemblerVirtualMachineName"));
 
         public override void SetDefaults()
         {
-            item.width = 30;
-            item.height = 30;
-       
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.useStyle = ItemUseStyleID.Stabbing;
-    
-            item.maxStack = 99;
-            item.consumable = true;
-            item.value = 50000;
-            item.rare = ItemRarityID.Blue;
-            item.createTile = ModContent.TileType<Tiles.Trophies.BossTrophies>();
-            item.placeStyle = 0;
+            Item.width = 30;
+            Item.height = 30;
+            
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.useStyle = ItemUseStyleID.Swing;
+            
+            Item.maxStack = 99;
+            Item.consumable = true;
+            Item.value = 50000;
+            Item.rare = ItemRarityID.Blue;
+            Item.createTile = ModContent.TileType<Tiles.Trophies.BossTrophies>();
+            Item.placeStyle = 0;
         }
     }
 }

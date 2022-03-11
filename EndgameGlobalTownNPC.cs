@@ -1,4 +1,5 @@
 ﻿using Terraria;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.Localization;
 
@@ -12,9 +13,9 @@ namespace Endgame
 
             switch(npc.type)
             {
-                case 22:
-                    if (Utils.NextBool(Main.rand, 5) && EndgameWorld.ZeerckSpawn)
-                        chat = Language.GetTextValue("Mods.Endgame.ExtraGuideQuote1", Main.npc[zeerckNPC].GivenName);
+                case NPCID.Guide:
+                    if (Utils.NextBool(Main.rand, 5) && EndgameWorld.ZeerckExist)
+                        chat = Language.GetTextValue("Mods.Endgame.Common.ExtraGuideQuote1", Main.npc[zeerckNPC].GivenName);
                     break;
             }
         }

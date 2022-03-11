@@ -10,35 +10,33 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.NanomachineName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.NanomachineDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineDescription"));
         }
 
         public override void SetDefaults()
         {
-            item.width = 20;
-            item.height = 30;
-            item.useTime = 20;
-            item.useAnimation = 20;
-            item.useStyle = ItemUseStyleID.SwingThrow;
-            item.value = 30000;
-            item.rare = ItemRarityID.Lime;
-            item.UseSound = SoundID.Item79;
-            item.noMelee = true;
-            item.mountType = ModContent.MountType<Mounts.Nanomachine>();
+            Item.width = 20;
+            Item.height = 30;
+            Item.useTime = 20;
+            Item.useAnimation = 20;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.value = 30000;
+            Item.rare = ItemRarityID.Lime;
+            Item.UseSound = SoundID.Item79;
+            Item.noMelee = true;
+            Item.mountType = ModContent.MountType<Mounts.Nanomachine>();
         }
 
         public override void AddRecipes()
         {
-            ModRecipe recipe = new ModRecipe(mod);
-
-            recipe.AddIngredient(ModContent.ItemType<ProgramerSoul>(), 57000);
-            recipe.AddIngredient(ItemID.Nanites, 450);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 5);
-            recipe.AddIngredient(ItemID.HallowedBar, 12);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.SetResult(this);
-            recipe.AddRecipe();
+            CreateRecipe(4)
+                .AddIngredient(ModContent.ItemType<ProgramerSoul>(), 57000)
+                .AddIngredient(ItemID.Nanites, 450)
+                .AddIngredient(ItemID.ChlorophyteBar, 5)
+                .AddIngredient(ItemID.HallowedBar, 12)
+                .AddTile(TileID.MythrilAnvil)
+                .Register();
         }
     }
 }

@@ -2,15 +2,14 @@
 using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
 using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
+using Terraria.Audio;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.Localization;
 using Terraria.DataStructures;
-
 using Microsoft.Xna.Framework;
 
 namespace Endgame
@@ -71,9 +70,9 @@ namespace Endgame
                 bool flag = num != 0;
 
                 if (player.active & flag)
-                    return EndgameWorld.DurthuSpawn;
+                    return EndgameWorld.DurthuExist;
             }
-            return EndgameWorld.DurthuSpawn;
+            return EndgameWorld.DurthuExist;
         }
 
         public static void DisplayLocalizedText(string key, Color? textColor = null)
@@ -82,12 +81,12 @@ namespace Endgame
                 textColor = new Color?(Color.BlueViolet);
 
             if (Main.netMode == NetmodeID.SinglePlayer)
-                Main.NewText(Language.GetTextValue(key), textColor.Value, false);
+                Main.NewText(Language.GetTextValue(key), textColor.Value);
             else
             {
                 if (Main.netMode == NetmodeID.MultiplayerClient)
                     return;
-                NetMessage.BroadcastChatMessage(NetworkText.FromKey(key, new object[0]), textColor.Value, -1);
+                NetMessage.SendData(MessageID.ChatText);
             }
         }
 
@@ -101,12 +100,13 @@ namespace Endgame
                     textColor = new Color?(Color.BlueViolet);
 
                 if (Main.netMode == NetmodeID.SinglePlayer)
-                    Main.NewText(Language.GetTextValue(key), textColor.Value, false);
+                    Main.NewText(Language.GetTextValue(key), textColor.Value);
                 else
                 {
                     if (Main.netMode == NetmodeID.MultiplayerClient)
                         return;
-                    NetMessage.BroadcastChatMessage(NetworkText.FromKey(key, new object[0]), textColor.Value, -1);
+                    NetMessage.SendData(MessageID.ChatText);
+                    //NetMessage.SendData(NetworkText.FromKey(key, new object[0]), textColor.Value, -1);
                 }
             });
         }
@@ -117,7 +117,7 @@ namespace Endgame
             {
                 Thread.Sleep(delay);
 
-                Main.PlaySound((int)SoundType.Custom, position, mod.GetSoundSlot(SoundType.Custom, path));
+                SoundEngine.PlaySound(SoundLoader.GetLegacySoundSlot(mod, path), position);
             });
         }
 
@@ -129,17 +129,19 @@ namespace Endgame
             {
                 if (Main.npc[i].active)
                 {
-                    if (EndgameWorld.DurthuSpawn && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcDurthu>())])
+                    if (EndgameWorld.DurthuExist && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcDurthu>())])
                         continue;
                     if (Main.npc[i] == Main.npc[npcSudarin])
                         continue;
-                    if (EndgameWorld.ZeerckSpawn && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcZeerck>())])
+                    if (EndgameWorld.ZeerckExist && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcZeerck>())])
                         continue;
 
                     Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
                 }
             }
-            Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.DeathReason1") + Main.LocalPlayer.name + Language.GetTextValue("Mods.Endgame.DeathReason11") + Main.npc[npcSudarin].GivenName + "'a..."), Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
+            Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.Common.DeathReason1") +
+                Main.LocalPlayer.name + Language.GetTextValue("Mods.Endgame.Common.DeathReason11") + Main.npc[npcSudarin].GivenName + "'a..."),
+                Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
         }
     }
 }

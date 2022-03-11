@@ -9,25 +9,25 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.GreenManName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.GreenManDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.GreenManName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.GreenManDescription"));
         }
 
         public override void SetDefaults()
         {
-            item.width = 18;
-            item.height = 34;
+            Item.width = 18;
+            Item.height = 34;
             
-            item.useTurn = true;
-            item.autoReuse = true;
-            item.useAnimation = 15;
-            item.useTime = 10;
-            item.useStyle = ItemUseStyleID.Stabbing;
+            Item.useTurn = true;
+            Item.autoReuse = true;
+            Item.useAnimation = 15;
+            Item.useTime = 10;
+            Item.useStyle = ItemUseStyleID.Swing;
             
-            item.rare = ItemRarityID.LightPurple;
-            item.maxStack = 99;
-            item.consumable = true;
-            item.createTile = ModContent.TileType<TanosFigureTiles>();
+            Item.rare = ItemRarityID.LightPurple;
+            Item.maxStack = 99;
+            Item.consumable = true;
+            Item.createTile = ModContent.TileType<TanosFigureTiles>();
         }
     }
 }

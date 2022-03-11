@@ -6,10 +6,10 @@ namespace Endgame.Buffs
 {
     public class WhoWroteEverythingBuff : ModBuff
     {
-        public override void SetDefaults()
+        public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.WhoWroteEverythingBuffName"));
-            Description.SetDefault(Language.GetTextValue("Mods.Endgame.WhoWroteEverythingBuffDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.WhoWroteEverythingBuffName"));
+            Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.WhoWroteEverythingBuffDescription"));
 
             Main.debuff[Type] = false;
             Main.pvpBuff[Type] = true;

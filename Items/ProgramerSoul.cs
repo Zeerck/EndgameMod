@@ -1,9 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
+﻿using Terraria;
 using Terraria.ID;
-using Terraria.Localization;
 using Terraria.ModLoader;
+using Terraria.Localization;
+using Terraria.DataStructures;
+using Microsoft.Xna.Framework;
 
 namespace Endgame.Items
 {
@@ -11,13 +11,14 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.ProgramerSoulName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.ProgramerSoulDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulDescription"));
 
-            Main.RegisterItemAnimation(item.type, new DrawAnimationVertical(5, 4));
-            ItemID.Sets.AnimatesAsSoul[item.type] = true;
-            ItemID.Sets.ItemIconPulse[item.type] = true;
-            ItemID.Sets.ItemNoGravity[item.type] = true;
+            Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
+
+            ItemID.Sets.AnimatesAsSoul[Item.type] = true;
+            ItemID.Sets.ItemIconPulse[Item.type] = true;
+            ItemID.Sets.ItemNoGravity[Item.type] = true;
         }
 
         public override void SetDefaults()
@@ -25,21 +26,21 @@ namespace Endgame.Items
             Item refItem = new Item();
 
             refItem.SetDefaults(ItemID.SoulofSight);
-            item.width = refItem.width;
-            item.height = refItem.height;
-            item.maxStack = 999999;
-            item.value = 1000;
-            item.rare = ItemRarityID.Lime;
+            Item.width = refItem.width;
+            Item.height = refItem.height;
+            Item.maxStack = 999999;
+            Item.value = 1000;
+            Item.rare = ItemRarityID.Lime;
         }
 
         public override void GrabRange(Player player, ref int grabRange)
         {
-            grabRange *= 3;
+            grabRange *= 4;
         }
 
         public override void PostUpdate()
         {
-            Lighting.AddLight(item.position, Color.LightBlue.ToVector3() * 0.55f * Main.essScale);
+            Lighting.AddLight(Item.position, Color.LightBlue.ToVector3() * 0.55f * Main.essScale);
         }
     }
 }
