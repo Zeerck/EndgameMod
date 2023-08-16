@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using Microsoft.Xna.Framework;
 
 namespace Endgame.Projectiles.Bosses
@@ -11,8 +10,6 @@ namespace Endgame.Projectiles.Bosses
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichShootName"));
-
             Main.projFrames[Projectile.type] = 3;
 
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 4;
@@ -87,6 +84,6 @@ namespace Endgame.Projectiles.Bosses
             return new Color?(new Color(num1, num1, num1, num2));
         }
 
-        public override void OnHitPlayer(Player target, int damage, bool crit) => target.AddBuff(ModContent.BuffType<Buffs.StopTalkingDebuff>(), 120, true);
+        public override void OnHitPlayer(Player target, Player.HurtInfo info) => target.AddBuff(ModContent.BuffType<Buffs.StopTalkingDebuff>(), 120, true);
     }
 }

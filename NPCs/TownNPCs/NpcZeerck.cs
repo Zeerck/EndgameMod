@@ -14,7 +14,7 @@ namespace Endgame.NPCs.TownNPCs
         private string _sudarinNPCName;
         private string _zeerckNPCName;
 
-        private static readonly List<string> _names = new List<string>()
+        private static readonly List<string> _names = new()
         {
             Language.GetTextValue("Mods.Endgame.Common.ZeerckName"),
             Language.GetTextValue("Mods.Endgame.Common.ZeerckyName"),
@@ -26,8 +26,6 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Anarchist");
-
             Main.npcFrameCount[NPC.type] = 23;
 
             NPCID.Sets.AttackType[NPC.type] = 0;
@@ -66,7 +64,7 @@ namespace Endgame.NPCs.TownNPCs
             EndgameWorld.ZeerckExist = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             for (int index = 0; index < byte.MaxValue; ++index)
             {
@@ -169,7 +167,7 @@ namespace Endgame.NPCs.TownNPCs
             button2 = Language.GetTextValue("Mods.Endgame.Common.NPCZeerckTextButton2");
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             var source = NPC.GetSource_Loot();
 

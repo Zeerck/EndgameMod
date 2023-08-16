@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using Terraria.Localization;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 
@@ -10,8 +11,7 @@ namespace Endgame.Tiles.Decorative
     {
         public override void SetStaticDefaults()
         {
-            ModTranslation mapEntryName = CreateMapEntryName();
-            mapEntryName.SetDefault("Tanos Figure");
+            LocalizedText mapEntryName = CreateMapEntryName();
 
             this.SetUpFigure();
 

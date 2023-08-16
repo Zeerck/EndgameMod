@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
 
@@ -11,9 +10,6 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulDescription"));
-
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
 
             ItemID.Sets.AnimatesAsSoul[Item.type] = true;
@@ -23,7 +19,7 @@ namespace Endgame.Items
 
         public override void SetDefaults()
         {
-            Item refItem = new Item();
+            Item refItem = new();
 
             refItem.SetDefaults(ItemID.SoulofSight);
             Item.width = refItem.width;

@@ -14,7 +14,7 @@ namespace Endgame.NPCs.TownNPCs
         private string _durthuNPCName;
         private string _zeerckNPCName;
 
-        private readonly List<string> _names = new List<string>()
+        private readonly List<string> _names = new()
         {
             Language.GetTextValue("Mods.Endgame.Common.SudarinName"),
             Language.GetTextValue("Mods.Endgame.Common.SuadrinName"),
@@ -24,8 +24,6 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Lord Pepegon");
-
             Main.npcFrameCount[NPC.type] = 23;
 
             NPCID.Sets.AttackType[NPC.type] = 0;
@@ -63,7 +61,7 @@ namespace Endgame.NPCs.TownNPCs
                 return;
             EndgameWorld.SudarinExist = true;
         }
-        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
+        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
         {
             for (int index = 0; index < byte.MaxValue; ++index)
             {
@@ -103,7 +101,7 @@ namespace Endgame.NPCs.TownNPCs
             if (EndgameWorld.ZeerckExist)
                 _zeerckNPCName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
-            List<string> chatList = new List<string>
+            List<string> chatList = new()
             {
                 Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText2"),
                 Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText4"),
@@ -133,7 +131,7 @@ namespace Endgame.NPCs.TownNPCs
                 button2 = Language.GetTextValue("Mods.Endgame.Common.NPCSudarinTextButton2");
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
+        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
         {
             var source = NPC.GetSource_Loot();
 

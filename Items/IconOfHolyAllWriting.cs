@@ -2,18 +2,11 @@
 using Terraria.ID;
 using Terraria.Audio;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace Endgame.Items
 {
     public class IconOfHolyAllWriting : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.IconOfHolyAllWritingName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.IconOfHolyAllWritingDescription"));
-        }
-
         public override void SetDefaults()
         {
             Item.width = 26;
@@ -35,7 +28,7 @@ namespace Endgame.Items
             if (Main.netMode != NetmodeID.MultiplayerClient)
                 NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
             else
-                NetMessage.SendData(MessageID.SpawnBoss, player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
+                NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
 
             EndgameUtils.DisplayLocalizedText("Mods.Endgame.Common.BorisichBossText1");
 

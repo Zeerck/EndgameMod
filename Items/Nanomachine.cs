@@ -1,19 +1,12 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 
 namespace Endgame.Items
 {
     //TODO: Nanomachine - Mount
     public class Nanomachine : ModItem
     {
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineDescription"));
-        }
-
         public override void SetDefaults()
         {
             Item.width = 20;

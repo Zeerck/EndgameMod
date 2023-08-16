@@ -1,12 +1,7 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
-
-using Microsoft.Xna.Framework;
-
-using System;
-using System.Collections.Generic;
 
 namespace Endgame.Items.Weapons
 {
@@ -23,8 +18,6 @@ namespace Endgame.Items.Weapons
 			double delayBetweenHits = Math.Round(_hitFrequency / 60f, 2);
 			double focusRadiusInBlocks = Math.Round(_focusRadius / 10f / 2, 2);
 
-			// DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Items.Weapons.HellstoneNutsName"));
-			// Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Items.Weapons.HellstoneNutsDescription", _maxTargets, delayBetweenHits, focusRadiusInBlocks));
 			Item.ResearchUnlockCount = 1;
 		}
 

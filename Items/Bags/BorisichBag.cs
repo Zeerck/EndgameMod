@@ -1,7 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Terraria.Localization;
 using Terraria.GameContent.ItemDropRules;
 using Endgame.NPCs.Bosses;
 
@@ -11,8 +10,6 @@ namespace Endgame.Items.Bags
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagDescription"));
             ItemID.Sets.BossBag[Type] = true;
         }
 
