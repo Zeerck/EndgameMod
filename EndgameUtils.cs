@@ -138,7 +138,7 @@ namespace Endgame
                     if (EndgameWorld.ZeerckExist && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcZeerck>())])
                         continue;
 
-                    Main.npc[i].StrikeNPCNoInteraction(Main.npc[i].lifeMax, 0f, -Main.npc[i].direction, true);
+                    Main.npc[i].SimpleStrikeNPC(Main.npc[i].lifeMax, -Main.npc[i].direction, true, 0, null, false, 0, true);
                 }
             }
             Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.Common.DeathReason1") +
@@ -199,7 +199,7 @@ namespace Endgame
 
             List<NPC> targetList = new();
 
-            var targetsCount = targets.OrderBy(pair => pair.Value).Take(targets.Count);
+            var targetsCount = targets.Reverse().OrderBy(pair => pair.Value).Take(targets.Count);
 
             foreach (KeyValuePair<NPC, float> keyValuePair in targetsCount)
             {
@@ -211,6 +211,29 @@ namespace Endgame
             }
 
             return targetList;
+        }
+
+        public static void DoNutsDamage(Player player, Item item, int maxTargets, int hitFrequency, int dustType, float focusRadius)
+        {
+            Vector2 mouse = new(Main.screenPosition.X + Main.mouseX, Main.screenPosition.Y + Main.mouseY);
+            List<NPC> enemiesList = GetTargettableNPCs(player.Center, mouse, focusRadius, maxTargets);
+
+            DrawDustRadius(player, focusRadius, dustType);
+
+            if (enemiesList.Count > 0)
+            {
+                foreach (NPC enemy in enemiesList)
+                {
+                    if ((int)Main.time % hitFrequency == 1)
+                    {
+                        NPC.HitInfo hitInfo = enemy.CalculateHitInfo(item.damage, -(int)(enemy.DirectionTo(player.position).X * 1.5f), Main.rand.NextBool(item.crit, 100), item.knockBack);
+                        enemy.StrikeNPC(hitInfo);
+                    }
+
+                    if (Main.rand.NextBool(5))
+                        DrawTargettableEffect(enemy, dustType);
+                }
+            }
         }
     }
 }
