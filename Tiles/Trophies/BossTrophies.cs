@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 using Terraria.ObjectData;
 using Terraria.DataStructures;
@@ -11,8 +12,8 @@ namespace Endgame.Tiles.Trophies
     {
         public override void SetStaticDefaults()
         {
-            ModTranslation mapEntryName = CreateMapEntryName();
-            mapEntryName.SetDefault("Trophy");
+            LocalizedText mapEntryName = CreateMapEntryName();
+            // mapEntryName.SetDefault("Trophy");
 
             Main.tileFrameImportant[Type] = true;
             Main.tileLavaDeath[Type] = true;

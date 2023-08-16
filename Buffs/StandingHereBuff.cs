@@ -8,8 +8,8 @@ namespace Endgame.Buffs
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StandingHereBuffName"));
-            Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StandingHereBuffDescription"));
+            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StandingHereBuffName"));
+            // Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StandingHereBuffDescription"));
 
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;

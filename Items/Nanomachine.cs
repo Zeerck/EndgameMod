@@ -10,8 +10,8 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineName"));
-            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineDescription"));
+            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineName"));
+            // Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineDescription"));
         }
 
         public override void SetDefaults()

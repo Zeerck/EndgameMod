@@ -131,13 +131,121 @@ Mods: {
 					Радиус {2} блоков.
 					'''
 			}
-		}
 
+			AssemblerTrophy: {
+				// DisplayName: Assembler Trophy
+				// Tooltip: ""
+			}
 
-		NPCName: {
-			NpcDurthu: Отец Всех Милф
-			NpcSudarin: Лорд Пепегон
-			NpcZeerck: Анархист
+			BorisichBag: {
+				// DisplayName: Borisich Bag
+				// Tooltip: ""
+			}
+
+			Conspectus: {
+				// DisplayName: Conspectus
+				// Tooltip: ""
+			}
+
+			IconOfHolyAllWriting: {
+				// DisplayName: Icon Of Holy All Writing
+				// Tooltip: ""
+			}
+
+			Nanomachine: {
+				// DisplayName: Nanomachine
+				// Tooltip: ""
+			}
+
+			ProgramerSoul: {
+				// DisplayName: Programer Soul
+				// Tooltip: ""
+			}
+
+			TanosFigure: {
+				// DisplayName: Tanos Figure
+				// Tooltip: ""
+			}
+
+			BoneNuts: {
+				// DisplayName: Bone Nuts
+				// Tooltip: ""
+			}
+
+			CactusNuts: {
+				// DisplayName: Cactus Nuts
+				// Tooltip: ""
+			}
+
+			CopperNuts: {
+				// DisplayName: Copper Nuts
+				// Tooltip: ""
+			}
+
+			CrimtaneNuts: {
+				// DisplayName: Crimtane Nuts
+				// Tooltip: ""
+			}
+
+			DemoniteNuts: {
+				// DisplayName: Demonite Nuts
+				// Tooltip: ""
+			}
+
+			FossilNuts: {
+				// DisplayName: Fossil Nuts
+				// Tooltip: ""
+			}
+
+			FrostyNuts: {
+				// DisplayName: Frosty Nuts
+				// Tooltip: ""
+			}
+
+			GoldNuts: {
+				// DisplayName: Gold Nuts
+				// Tooltip: ""
+			}
+
+			HellstoneNuts: {
+				// DisplayName: Hellstone Nuts
+				// Tooltip: ""
+			}
+
+			IronNuts: {
+				// DisplayName: Iron Nuts
+				// Tooltip: ""
+			}
+
+			LeadNuts: {
+				// DisplayName: Lead Nuts
+				// Tooltip: ""
+			}
+
+			PlatinumNuts: {
+				// DisplayName: Platinum Nuts
+				// Tooltip: ""
+			}
+
+			SilverNuts: {
+				// DisplayName: Silver Nuts
+				// Tooltip: ""
+			}
+
+			TinNuts: {
+				// DisplayName: Tin Nuts
+				// Tooltip: ""
+			}
+
+			TungstenNuts: {
+				// DisplayName: Tungsten Nuts
+				// Tooltip: ""
+			}
+
+			WoodNuts: {
+				// DisplayName: Wood Nuts
+				// Tooltip: ""
+			}
 		}
 
 		Common: {
@@ -158,6 +266,7 @@ Mods: {
 			NpcDurthuText2: Знаешь, в какой-то степени я тоже Всепишущий.
 			NpcDurthuText3: Раньше я доверял Визарту...
 			NpcDurthuText4: В галактике была война только потому, что {0} пригласил жену галактического императора «Выпить Чаю».
+			// NpcDurthuText41: invited a wife of galactic emperor to "drink some tea".
 			NpcDurthuText5: Знаешь, у меня до сих пор всплывают воспоминания о том времени, когда мы были в Storm Team... Я просто надеюсь, что никогда больше не встречу этих чёрно-жёлтых «бакуганов».
 			NpcDurthuText6: Фабрики — Заводам, Рабочих — Крестьянам, Милф — {0}
 			NpcDurthuText7: Не верь самураям клана Троцкий.
@@ -172,9 +281,11 @@ Mods: {
 			NpcDurthuText12: Пожалуйста, никогда не говори «Поехали», «Иди со мной», «ПОШЛИ» и «ПОИДЕМ». НИКОГДА!
 			NpcDurthuTextBloodMoon: ТЫ НЕ ЗНАЕШЬ, К ЧЕМУ ЭТО ВЕДЁТ!
 			NpcDurthuTextConspectus1: Оу, у тебя есть конспекты {0}'а! Я думаю тебе стоит обратиться к нему с ними.
+			// NpcDurthuTextConspectus12: "'s Conspectus! I think you should contact him with them."
 			NpcSudarinText1: "{0} был нашим главным командором, когда мы были в Storm Team."
 			NpcSudarinText2: Я участвовал в войне с инопланетянами. Они послали на нас гигантских муравьев, лягушек, пчел и прочих.
 			NpcSudarinText3: Интересный факт, однажды {0} называли "Маджима Сука!".
+			// NpcSudarinText31: name was "Majima Bitch".
 			NpcSudarinText4: Наномашины СЫНОК!
 			NpcSudarinText5: Напас — Лавандос.
 			NpcSudarinText6: В конце концов, в Лос-Сантосе действительно много полицейских.
@@ -188,9 +299,13 @@ Mods: {
 			NpcZeerckText1: Чекай!
 			NpcZeerckText2: У меня есть машина, которая ломается практически от любого касания, и мне нужно чинить её за 24 000 серебряников. Думаю заменить на что-нибудь, но даже не знаю на что...
 			NpcZeerckText3: Я слышал, что {0} всё писал.
+			// NpcZeerckText31: " wrote everything."
 			NpcZeerckText4: Ты видел икону святого всепишущего? Да, это фото самого {0}'а.
+			// NpcZeerckText41: " himself."
 			NpcZeerckText5: Будь осторожен, {0} весит 300 килограммов и способен пробить стену, если захочет.
+			// NpcZeerckText51: " weighs 300 kilograms and is capable of breaking through a wall if he wants to."
 			NpcZeerckText6: Во время 40 000-летней войны, {0} и Я сражались против всех и мы повсюду распространяли скверну. Да, хорошие были времена...
+			// NpcZeerckText61: " and I fought against all and spread defilement everywhere. Yes, there were good times..."
 			NpcZeerckText7: Борисыч назвал нас демагогами. Я все еще не понимаю, что ему не нравится во фразе «Вы ошибаетесь».
 			NpcZeerckText8: Ненавижу гномов...
 			NpcZeerckText9: Где же ты, Джаброни в Танке?...
@@ -210,7 +325,7 @@ Mods: {
 			NpcZeerckToDmitrixText: У меня есть брат на Луне с огромным молотом. Так же у него очень странная голова и бледная кожа.
 			NpcZeerckToDima800Text1: Свое имя Я получил в результате великой войны с миллиардами зомби.
 			NpcZeerckToDima800Text2: Ты когда-нибудь слышал о челленджах?
-			NpcZeerckTextConspectus: О, у тебя есть Конспекты, я думаю, тебе стоит вернуть их {0}
+			// NpcDurthuTextConspectus: "Oh, you have Conspectus, I think you should return them to "
 			NpcDurthuTextButton: Получить Трофей
 			NpcDurthuTextButton2: Забыть Конспекты
 			NpcSudarinTextButton: Получить Человечка
@@ -252,16 +367,96 @@ Mods: {
 			BorisichShootName: Сила Ассемблера, Сынок!
 			NpcShootName: Сила C#, Старик!
 			DeathReason1: "Сердце "
-			DeathReason11: " не выдержало столь громкого чиха "
+			// DeathReason12: " could not stand such a loud sneeze "
 			DeathReason2: "Это самый простой способ позабыть прочитанное... "
 			DeathReason21: " воспользовался этим..."
 			ForgetConspectus: "{0} легонько щёлкнул вас по лбу и вы позабыли древние знания..."
 			OldPowersOfAnarchizmText: Древние силы Анархизма были выпущены на волю...
 			NanomachineMountDescription: Я думал, она меньше...
 			ExtraGuideQuote1: Ты знаешь {0}? Говорят, он из другого мира. И он рассказывал о сотнях миров, подобных нашему.
-
 			StandingHereBuffName: Standing Here, I REALIZE!!!
 			StandingHereBuffDescription: Just like me trying to make history.
+		}
+
+		Tiles: {
+			// TanosFigureTiles.MapEntry: Tanos Figure Tiles
+			// BossTrophies.MapEntry: Boss Trophies
+		}
+
+		Buffs: {
+			Nanomachine: {
+				// DisplayName: Nanomachine
+				// Description: Mods.Endgame.Buffs.Nanomachine.Description
+			}
+
+			StandingHereBuff: {
+				// DisplayName: Standing Here Buff
+				// Description: Mods.Endgame.Buffs.StandingHereBuff.Description
+			}
+
+			StopTalkingDebuff: {
+				// DisplayName: Stop Talking Debuff
+				// Description: Mods.Endgame.Buffs.StopTalkingDebuff.Description
+			}
+
+			WhoWroteEverythingBuff: {
+				// DisplayName: Who Wrote Everything Buff
+				// Description: Mods.Endgame.Buffs.WhoWroteEverythingBuff.Description
+			}
+		}
+
+		NPCs: {
+			// BorisichEndgameBoss.DisplayName: Borisich Endgame Boss
+
+			NpcDurthu: {
+				// DisplayName: Npc Durthu
+
+				TownNPCMood: {
+					// Content: Я довольный.
+					// NoHome: Терпеть не могу, когда у меня нет дома.
+					// FarFromHome: Я слишком далеко от дома.
+					// LoveSpace: Я люблю, когда так много пространства.
+					// DislikeCrowded: Мне не нравится то, как здесь людно.
+					// HateCrowded: Я ненавижу то, как здесь людно.
+					// LikeNPC_Princess: I like {NPCName}.
+					// Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+
+			NpcSudarin: {
+				// DisplayName: Npc Sudarin
+
+				TownNPCMood: {
+					// Content: Я довольный.
+					// NoHome: Терпеть не могу, когда у меня нет дома.
+					// FarFromHome: Я слишком далеко от дома.
+					// LoveSpace: Я люблю, когда так много пространства.
+					// DislikeCrowded: Мне не нравится то, как здесь людно.
+					// HateCrowded: Я ненавижу то, как здесь людно.
+					// LikeNPC_Princess: I like {NPCName}.
+					// Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+
+			NpcZeerck: {
+				// DisplayName: Npc Zeerck
+
+				TownNPCMood: {
+					// Content: Я довольный.
+					// NoHome: Терпеть не могу, когда у меня нет дома.
+					// FarFromHome: Я слишком далеко от дома.
+					// LoveSpace: Я люблю, когда так много пространства.
+					// DislikeCrowded: Мне не нравится то, как здесь людно.
+					// HateCrowded: Я ненавижу то, как здесь людно.
+					// LikeNPC_Princess: I like {NPCName}.
+					// Princess_LovesNPC: I like {NPCName}.
+				}
+			}
+		}
+
+		Projectiles: {
+			// BorisichEndgameProjectile.DisplayName: Borisich Endgame Projectile
+			// NPCsShoot.DisplayName: N P Cs Shoot
 		}
 	}
 }
