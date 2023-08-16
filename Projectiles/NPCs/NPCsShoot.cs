@@ -11,7 +11,7 @@ namespace Endgame.Projectiles.NPCs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NpcShootName"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NpcShootName"));
 
             Main.projFrames[Projectile.type] = 3;
 

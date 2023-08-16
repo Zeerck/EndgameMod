@@ -8,8 +8,8 @@ namespace Endgame.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StopTalkingDebuffName"));
-            // Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StopTalkingDebuffDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StopTalkingDebuffName"));
+            Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.StopTalkingDebuffDescription"));
 
             Main.debuff[Type] = true;
             Main.pvpBuff[Type] = true;

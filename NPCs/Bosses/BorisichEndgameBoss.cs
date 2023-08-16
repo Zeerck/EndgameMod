@@ -28,7 +28,7 @@ namespace Endgame.NPCs.Bosses
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBossName"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBossName"));
 
             Main.npcFrameCount[NPC.type] = 6;
             NPCID.Sets.TrailingMode[NPC.type] = 1;
@@ -60,22 +60,22 @@ namespace Endgame.NPCs.Bosses
             Music = MusicLoader.GetMusicSlot(Mod, "Sounds/Music/ItWasToBeThisWay");
         }
 
-        public override void ApplyDifficultyAndPlayerScaling(int numPlayers, float balance, float bossAdjustment)/* tModPorter Note: bossLifeScale -> balance (bossAdjustment is different, see the docs for details) */
+        public override void ScaleExpertStats(int numPlayers, float bossLifeScale)
         {
             if (numPlayers > 1)
-                NPC.lifeMax = (int)(NPC.lifeMax * (numPlayers * NPC.lifeMax / 1.5) * balance);
+                NPC.lifeMax = (int)(NPC.lifeMax * ((numPlayers * NPC.lifeMax) / 1.5) * bossLifeScale);
             else
-                NPC.lifeMax = (int)(NPC.lifeMax * balance);
+                NPC.lifeMax = (int)(NPC.lifeMax * bossLifeScale);
 
             NPC.damage = (int)(NPC.damage + 1.3f);
         }
 
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit)
+        public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
         {
             SoundEngine.PlaySound(new SoundStyle("Endgame/Sounds/Custom/Borisich_raz"), NPC.position);
         }
 
-        public override void OnHitPlayer(Player target, Player.HurtInfo hurtInfo)
+        public override void OnHitPlayer(Player target, int damage, bool crit)
         {
             SoundEngine.PlaySound(new SoundStyle("Endgame/Sounds/Custom/Borisich_raz"), NPC.position);
             _playerDead = false;

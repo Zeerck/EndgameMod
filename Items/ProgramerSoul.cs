@@ -11,8 +11,8 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulName"));
-            // Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.ProgramerSoulDescription"));
 
             Main.RegisterItemAnimation(Item.type, new DrawAnimationVertical(5, 4));
 

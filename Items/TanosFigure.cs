@@ -9,8 +9,8 @@ namespace Endgame.Items
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.GreenManName"));
-            // Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.GreenManDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.GreenManName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.GreenManDescription"));
         }
 
         public override void SetDefaults()

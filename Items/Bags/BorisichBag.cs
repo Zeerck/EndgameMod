@@ -11,8 +11,8 @@ namespace Endgame.Items.Bags
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagName"));
-            // Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagName"));
+            Tooltip.SetDefault(Language.GetTextValue("Mods.Endgame.Common.BorisichBagDescription"));
             ItemID.Sets.BossBag[Type] = true;
         }
 

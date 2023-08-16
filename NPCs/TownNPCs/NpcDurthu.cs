@@ -24,7 +24,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Father of all Milfs");
+            DisplayName.SetDefault("Father of all Milfs");
 
             Main.npcFrameCount[NPC.type] = 23;
 
@@ -64,7 +64,7 @@ namespace Endgame.NPCs.TownNPCs
             EndgameWorld.DurthuExist = true;
         }
 
-        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             for (int index = 0; index < byte.MaxValue; ++index)
             {
@@ -106,7 +106,7 @@ namespace Endgame.NPCs.TownNPCs
             if (EndgameWorld.ZeerckExist)
                 _zeerckNPCName = Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NpcZeerck>())].GivenName;
 
-            List<string> chatList = new()
+            List<string> chatList = new List<string>
             {
                 Language.GetTextValue("Mods.Endgame.Common.NPCDurthuText1"),
                 Language.GetTextValue("Mods.Endgame.Common.NPCDurthuText2"),
@@ -141,7 +141,7 @@ namespace Endgame.NPCs.TownNPCs
                 button2 = Language.GetTextValue("Mods.Endgame.Common.NPCDurthuTextButton2");
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
             var source = NPC.GetSource_Loot();
 

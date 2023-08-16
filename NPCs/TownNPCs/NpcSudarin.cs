@@ -24,7 +24,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault("Lord Pepegon");
+            DisplayName.SetDefault("Lord Pepegon");
 
             Main.npcFrameCount[NPC.type] = 23;
 
@@ -63,7 +63,7 @@ namespace Endgame.NPCs.TownNPCs
                 return;
             EndgameWorld.SudarinExist = true;
         }
-        public override bool CanTownNPCSpawn(int numTownNPCs)/* tModPorter Suggestion: Copy the implementation of NPC.SpawnAllowed_Merchant in vanilla if you to count money, and be sure to set a flag when unlocked, so you don't count every tick. */
+        public override bool CanTownNPCSpawn(int numTownNPCs, int money)
         {
             for (int index = 0; index < byte.MaxValue; ++index)
             {
@@ -133,7 +133,7 @@ namespace Endgame.NPCs.TownNPCs
                 button2 = Language.GetTextValue("Mods.Endgame.Common.NPCSudarinTextButton2");
         }
 
-        public override void OnChatButtonClicked(bool firstButton, ref string shopName)
+        public override void OnChatButtonClicked(bool firstButton, ref bool shop)
         {
             var source = NPC.GetSource_Loot();
 

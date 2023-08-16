@@ -100,7 +100,7 @@ Mods: {
 					'''
 				SilverNutsName: Silver NUTS
 				SilverNutsDescription:
-					'''
+					'''	
 					Van Helsing's legacy. Better to use against evil spirits
 					Maximum targets {0}
 					Delay between hits {1} sec.
@@ -108,7 +108,7 @@ Mods: {
 					'''
 				TinNutsName: Tin NUTS
 				TinNutsDescription:
-					'''
+					'''	
 					The Tin Man doesn't need them anymore...
 					Maximum targets {0}
 					Delay between hits {1} sec.
@@ -116,7 +116,7 @@ Mods: {
 					'''
 				TungstenNutsName: Tungsten NUTS
 				TungstenNutsDescription:
-					'''
+					'''	
 					They love it hot
 					Maximum targets {0}
 					Delay between hits {1} sec.
@@ -130,121 +130,6 @@ Mods: {
 					Delay between hits {1} sec.
 					Radius {2} blocks
 					'''
-			}
-
-			AssemblerTrophy: {
-				DisplayName: Assembler Trophy
-				Tooltip: ""
-			}
-
-			BorisichBag: {
-				DisplayName: Borisich Bag
-				Tooltip: ""
-			}
-
-			Conspectus: {
-				DisplayName: Conspectus
-				Tooltip: ""
-			}
-
-			IconOfHolyAllWriting: {
-				DisplayName: Icon Of Holy All Writing
-				Tooltip: ""
-			}
-
-			Nanomachine: {
-				DisplayName: Nanomachine
-				Tooltip: ""
-			}
-
-			ProgramerSoul: {
-				DisplayName: Programer Soul
-				Tooltip: ""
-			}
-
-			TanosFigure: {
-				DisplayName: Tanos Figure
-				Tooltip: ""
-			}
-
-			BoneNuts: {
-				DisplayName: Bone Nuts
-				Tooltip: ""
-			}
-
-			CactusNuts: {
-				DisplayName: Cactus Nuts
-				Tooltip: ""
-			}
-
-			CopperNuts: {
-				DisplayName: Copper Nuts
-				Tooltip: ""
-			}
-
-			CrimtaneNuts: {
-				DisplayName: Crimtane Nuts
-				Tooltip: ""
-			}
-
-			DemoniteNuts: {
-				DisplayName: Demonite Nuts
-				Tooltip: ""
-			}
-
-			FossilNuts: {
-				DisplayName: Fossil Nuts
-				Tooltip: ""
-			}
-
-			FrostyNuts: {
-				DisplayName: Frosty Nuts
-				Tooltip: ""
-			}
-
-			GoldNuts: {
-				DisplayName: Gold Nuts
-				Tooltip: ""
-			}
-
-			HellstoneNuts: {
-				DisplayName: Hellstone Nuts
-				Tooltip: ""
-			}
-
-			IronNuts: {
-				DisplayName: Iron Nuts
-				Tooltip: ""
-			}
-
-			LeadNuts: {
-				DisplayName: Lead Nuts
-				Tooltip: ""
-			}
-
-			PlatinumNuts: {
-				DisplayName: Platinum Nuts
-				Tooltip: ""
-			}
-
-			SilverNuts: {
-				DisplayName: Silver Nuts
-				Tooltip: ""
-			}
-
-			TinNuts: {
-				DisplayName: Tin Nuts
-				Tooltip: ""
-			}
-
-			TungstenNuts: {
-				DisplayName: Tungsten Nuts
-				Tooltip: ""
-			}
-
-			WoodNuts: {
-				DisplayName: Wood Nuts
-				Tooltip: ""
 			}
 		}
 
@@ -266,7 +151,7 @@ Mods: {
 			NpcDurthuText2: You know, to some extent I too "All-Writing".
 			NpcDurthuText3: I trust Vizart before...
 			NpcDurthuText4: "There was a war in a galaxy just because "
-			NpcDurthuText41: invited a wife of galactic emperor to "drink some tea".
+			NpcDurthuText41: ''' invited a wife of galactic emperor to "drink some tea".'''
 			NpcDurthuText5: You know, i still have flashbacks from the time we were in Storm Team... I just hope i will never ever meet this black-yellow "bakugans" again.
 			NpcDurthuText6: "Fabrics to Factories, Workers to Peasants, Milf's to "
 			NpcDurthuText7: Do not trust the samurai of the Trotsky clan.
@@ -285,7 +170,7 @@ Mods: {
 			NpcSudarinText1: " was our chief commander in the times, when we was in Storm Team."
 			NpcSudarinText2: I participated in the war against the aliens. They sent at us giant ants, frogs, bees and etc.
 			NpcSudarinText3: "An interesting fact, once "
-			NpcSudarinText31: name was "Majima Bitch".
+			NpcSudarinText31: ''' name was "Majima Bitch".'''
 			NpcSudarinText4: Nanomachines SON!
 			NpcSudarinText5: Napas - Lavandos.
 			NpcSudarinText6: After all, there are really a lot of cops in Los Santos.
@@ -374,89 +259,9 @@ Mods: {
 			OldPowersOfAnarchizmText: The ancient forces of Anarchism were unleashed...
 			NanomachineMountDescription: I thought she was smaller...
 			ExtraGuideQuote1: Do you know {0}? They say he is from another world. And he talked about hundreds of worlds like ours.
+
 			StandingHereBuffName: Standing Here, I REALIZE!!!
 			StandingHereBuffDescription: Just like me trying to make history.
-		}
-
-		Tiles: {
-			TanosFigureTiles.MapEntry: Tanos Figure Tiles
-			BossTrophies.MapEntry: Boss Trophies
-		}
-
-		Buffs: {
-			Nanomachine: {
-				DisplayName: Nanomachine
-				Description: Mods.Endgame.Buffs.Nanomachine.Description
-			}
-
-			StandingHereBuff: {
-				DisplayName: Standing Here Buff
-				Description: Mods.Endgame.Buffs.StandingHereBuff.Description
-			}
-
-			StopTalkingDebuff: {
-				DisplayName: Stop Talking Debuff
-				Description: Mods.Endgame.Buffs.StopTalkingDebuff.Description
-			}
-
-			WhoWroteEverythingBuff: {
-				DisplayName: Who Wrote Everything Buff
-				Description: Mods.Endgame.Buffs.WhoWroteEverythingBuff.Description
-			}
-		}
-
-		NPCs: {
-			BorisichEndgameBoss.DisplayName: Borisich Endgame Boss
-
-			NpcDurthu: {
-				DisplayName: Npc Durthu
-
-				TownNPCMood: {
-					Content: Я довольный.
-					NoHome: Терпеть не могу, когда у меня нет дома.
-					FarFromHome: Я слишком далеко от дома.
-					LoveSpace: Я люблю, когда так много пространства.
-					DislikeCrowded: Мне не нравится то, как здесь людно.
-					HateCrowded: Я ненавижу то, как здесь людно.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			NpcSudarin: {
-				DisplayName: Npc Sudarin
-
-				TownNPCMood: {
-					Content: Я довольный.
-					NoHome: Терпеть не могу, когда у меня нет дома.
-					FarFromHome: Я слишком далеко от дома.
-					LoveSpace: Я люблю, когда так много пространства.
-					DislikeCrowded: Мне не нравится то, как здесь людно.
-					HateCrowded: Я ненавижу то, как здесь людно.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-
-			NpcZeerck: {
-				DisplayName: Npc Zeerck
-
-				TownNPCMood: {
-					Content: Я довольный.
-					NoHome: Терпеть не могу, когда у меня нет дома.
-					FarFromHome: Я слишком далеко от дома.
-					LoveSpace: Я люблю, когда так много пространства.
-					DislikeCrowded: Мне не нравится то, как здесь людно.
-					HateCrowded: Я ненавижу то, как здесь людно.
-					LikeNPC_Princess: I like {NPCName}.
-					Princess_LovesNPC: I like {NPCName}.
-				}
-			}
-		}
-
-		Projectiles: {
-			BorisichEndgameProjectile.DisplayName: Borisich Endgame Projectile
-			NPCsShoot.DisplayName: N P Cs Shoot
 		}
 	}
 }

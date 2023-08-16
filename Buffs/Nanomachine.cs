@@ -8,8 +8,8 @@ namespace Endgame.Buffs
     {
         public override void SetStaticDefaults()
         {
-            // DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineName"));
-            // Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineMountDescription"));
+            DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineName"));
+            Description.SetDefault(Language.GetTextValue("Mods.Endgame.Common.NanomachineMountDescription"));
 
             Main.buffNoTimeDisplay[Type] = true;
             Main.buffNoSave[Type] = true;

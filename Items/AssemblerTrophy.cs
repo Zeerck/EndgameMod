@@ -6,7 +6,7 @@ namespace Endgame.Items
 {
     public class AssemblerTrophy : ModItem
     {
-        // public override void SetStaticDefaults() => DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.AssemblerVirtualMachineName"));
+        public override void SetStaticDefaults() => DisplayName.SetDefault(Language.GetTextValue("Mods.Endgame.Common.AssemblerVirtualMachineName"));
 
         public override void SetDefaults()
         {
