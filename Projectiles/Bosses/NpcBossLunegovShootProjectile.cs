@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Endgame.Projectiles.Bosses
 {
-    public class BorisichEndgameProjectile : ModProjectile
+    public class NpcBossLunegovShootProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -21,7 +21,7 @@ namespace Endgame.Projectiles.Bosses
             Projectile.width = 20;
             Projectile.height = 20;
 
-            Projectile.friendly = false; //I'm trying to fix this in order for damage NPCs
+            Projectile.friendly = false; //TODO: I'm trying to fix this in order for damage NPCs
             Projectile.hostile = true;
 
             Projectile.ignoreWater = true;

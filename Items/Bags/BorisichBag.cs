@@ -28,7 +28,7 @@ namespace Endgame.Items.Bags
 
         public override void ModifyItemLoot(ItemLoot itemLoot)
         {
-            itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<BorisichEndgameBoss>()));
+            itemLoot.Add(ItemDropRule.CoinsBasedOnNPCValue(ModContent.NPCType<NpcBossLunegov>()));
             itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<Conspectus>(), 1));
             itemLoot.Add(ItemDropRule.Common(ItemID.WaterBucket, 1, 42, 42));
         }

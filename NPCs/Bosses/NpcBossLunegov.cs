@@ -10,7 +10,7 @@ namespace Endgame.NPCs.Bosses
 {
     //TODO: Make Borisich AI smarter
     [AutoloadBossHead]
-    public class BorisichEndgameBoss : ModNPC
+    public class NpcBossLunegov : ModNPC
     {
         private int _ai;
         private int _frame = 0;
@@ -123,7 +123,7 @@ namespace Endgame.NPCs.Bosses
                 if (!_playerDead)
                 {
                     EndgameUtils.PlayCustomLocalDelaySound(Main.LocalPlayer.position, "Endgame/Sounds/Custom/Borisich_vot_i_vsya_prog", 7000);
-                    EndgameUtils.DisplayDelayLocalizedText("Mods.Endgame.Common.BorisichBossText2", 7000);
+                    EndgameUtils.DisplayDelayLocalizedText("Mods.Endgame.ChatMessage.NpcBossLunegov.DespawningChatMessage1", 7000);
                     _playerDead = true;
                 }
 
@@ -225,7 +225,7 @@ namespace Endgame.NPCs.Bosses
 
                     for (int i = 0; i < (Main.expertMode ? 5 : 3); i++)
                     {
-                        Projectile.NewProjectile(NPC.GetSource_FromThis(), shootPos.X + (-100 * NPC.direction) + Main.rand.Next(-40, 41), shootPos.Y - Main.rand.Next(-50, 40), shootVel.X, shootVel.Y, ModContent.ProjectileType<Projectiles.Bosses.BorisichEndgameProjectile>(), NPC.damage / 3, 5f);
+                        Projectile.NewProjectile(NPC.GetSource_FromThis(), shootPos.X + (-100 * NPC.direction) + Main.rand.Next(-40, 41), shootPos.Y - Main.rand.Next(-50, 40), shootVel.X, shootVel.Y, ModContent.ProjectileType<Projectiles.Bosses.NpcBossLunegovShootProjectile>(), NPC.damage / 3, 5f);
                     }
                 }
                 else
@@ -282,7 +282,7 @@ namespace Endgame.NPCs.Bosses
             NPC.velocity = move;
         }
 
-        private void MoveToPlayer(Vector2 playerTarget) //bad thing
+        private void MoveToPlayer(Vector2 playerTarget) //HACK: bad thing
         {
             var move = playerTarget - NPC.Center;
 
@@ -326,7 +326,7 @@ namespace Endgame.NPCs.Bosses
                 EndgameWorld.ZeerckExist = true;
             }
 
-            EndgameUtils.DisplayLocalizedText("Mods.Endgame.Common.OldPowersOfAnarchizmText", Color.Lime);
+            EndgameUtils.DisplayLocalizedText("Mods.Endgame.ChatMessage.OldPowersOfAnarchizmChatMessage1", Color.Lime);
 
             EndgameWorld.borisichDefeated = true;
             EndgameNet.SyncWorld();
