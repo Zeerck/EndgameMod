@@ -1,267 +1,362 @@
 Mods: {
 	Endgame: {
+		NutsWeaponsTooltip: {
+			MaximumTargets: Максимум целей: {0}
+			HitDelay: Задержка: {0} сек
+			Radius: Радиус: {0} блоков
+		}
+
+		DamageClasses.NutsDamageClass.DisplayName: яичного урона
+
 		Items: {
-			Weapons: {
-				BoneNutsName: Костяные ЯЙЦА
-				BoneNutsDescription:
+			AssemblerTrophy: {
+				DisplayName: Виртуальная Машина на Ассемблере
+				Tooltip: Веет неограниченной силой
+			}
+
+			BorisichBag: {
+				DisplayName: Мешок с сокровищами (Лунегов Олег Борисович)
+				Tooltip:
 					'''
-					Находятся в сухости, но всегда влажные
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					[c/ff0e0e:Какой ценой вы получили это?]
+					{$CommonItemTooltip.RightClickToOpen}
 					'''
-				CactusNutsName: Кактусовые ЯЙЦА
-				CactusNutsDescription:
+			}
+
+			Conspectus: {
+				DisplayName: Тетрадь с конспектами
+				Tooltip:
 					'''
-					Колются...
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					Прикосаясь, вы чувствуете [c/a9dcf4:влагу]
+					Похоже, здесь больше воды, чем информации
+					Только [c/ffff64:Гений] может прочитать это.
 					'''
-				CopperNutsName: Медные ЯЙЦА
-				CopperNutsDescription:
+			}
+
+			IconOfHolyAllWriting: {
+				DisplayName: Икона Святого Всепищущего
+				Tooltip:
 					'''
-					Прочнее чем дерево...
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					Здесь изображен сам [c/ffff64:Гений]
+					Начинает Эндшпиль
+					Используйте на свой [c/ff0e0e:риск]
 					'''
-				CrimtaneNutsName: Кримтановые ЯЙЦА
-				CrimtaneNutsDescription:
+			}
+
+			Nanomachine: {
+				DisplayName: Наномашинка
+				Tooltip: Это нано-транспорт?
+			}
+
+			ProgramerSoul: {
+				DisplayName: Частичка программиста
+				Tooltip: В каждом из нас есть частичка программиста.
+			}
+
+			TanosFigure: {
+				DisplayName: Зелёный Человечек
+				Tooltip: А, опять ваши [c/008000:зелёные человечки]...
+			}
+
+			BoneNuts: {
+				DisplayName: Костяные ЯЙЦА
+				Tooltip: Звучат как [c/e3dac9:игральные кости]
+			}
+
+			CactusNuts: {
+				DisplayName: Кактусовые ЯЙЦА
+				Tooltip: "[c/2E6021:Колючие...]"
+			}
+
+			CopperNuts: {
+				DisplayName: Медные ЯЙЦА
+				Tooltip: Наверное, лучше, чем [c/966F33:деревянные]...
+			}
+
+			CrimtaneNuts: {
+				DisplayName: Кровавые ЯЙЦА
+				Tooltip: "[c/880808:Кровоточат...]"
+			}
+
+			DemoniteNuts: {
+				DisplayName: Демонитовые ЯЙЦА
+				Tooltip: Принадлежали одной рогачке...
+			}
+
+			FossilNuts: {
+				DisplayName: Ископаемые ЯЙЦА
+				Tooltip: Старые и [c/8d7961:окаменевшие]...
+			}
+
+			FrostyNuts: {
+				DisplayName: Морозные ЯЙЦА
+				Tooltip: Stay [c/99CCFF:frosty]
+			}
+
+			GoldNuts: {
+				DisplayName: Золотые ЯЙЦА
+				Tooltip: Блестящие и прочные... Как [c/FFED8A:лысина] Лунегова
+			}
+
+			HellstoneNuts: {
+				DisplayName: Расскалённые ЯЙЦА
+				Tooltip: "[c/ff6c3b:Жгучие]... Ощущение как-будто надеть джинсы без трусов в 40-градусную жару."
+			}
+
+			IronNuts: {
+				DisplayName: Железные ЯЙЦА
+				Tooltip: Выбор настоящего мужчины! Попробуй их в деле
+			}
+
+			LeadNuts: {
+				DisplayName: Свинцовые ЯЙЦА
+				Tooltip: "[c/5c6274:Крупнокалиберное] решение"
+			}
+
+			PlatinumNuts: {
+				DisplayName: Платиновые ЯЙЦА
+				Tooltip: Выбор каждого [c/e5e4e2:уважающего себя] мужчины
+			}
+
+			SilverNuts: {
+				DisplayName: Серебрянные ЯЙЦА
+				Tooltip: Наследство Ван Хельсинга. Лучше подходит против [c/730073:нежити]
+			}
+
+			TinNuts: {
+				DisplayName: Оловянные ЯЙЦА
+				Tooltip: "[c/e4dba2:Оловянному человечку] они больше не нужны..."
+			}
+
+			TungstenNuts: {
+				DisplayName: Вольфрамовые ЯЙЦА
+				Tooltip: Они любят [c/ff7251:погорячее]
+			}
+
+			WoodNuts: {
+				DisplayName: Деревянные ЯЙЦА
+				Tooltip: Вонючие деревянные ЯЙЦА!
+			}
+
+			TestItem: {
+				DisplayName: Тестовый предмет
+				Tooltip: Может сломать ваш ПК
+			}
+		}
+
+		NPCs: {
+			NpcDurthu: {
+				TownNPCMood: {
+					Content: Это контент.
+					NoHome: Мне не нравится быть бездомным.
+					FarFromHome: Я слишком далеко от дома.
+					LoveSpace: Мне нравиться, когда у меня есть столько пространства.
+					DislikeCrowded: Мне не нравиться так много людей.
+					HateCrowded: Я ненавижу когда в одном месте столько людей.
+					LikeNPC_Princess: Мне нравится {NPCName}.
+					Princess_LovesNPC: Мне нравится {NPCName}.
+				}
+
+				Names: {
+					DurthuName: Durthu
+					ComradeGruzoffName: Comrade Gruzoff
+					ComradeGruzonName: Comrade Gruzon
+				}
+
+				DisplayName: Отец всех Милф
+			}
+
+			NpcSudarin: {
+				TownNPCMood: {
+					Content: Это контент.
+					NoHome: Мне не нравится быть бездомным.
+					FarFromHome: Я слишком далеко от дома.
+					LoveSpace: Мне нравиться, когда у меня есть столько пространства.
+					DislikeCrowded: Мне не нравиться так много людей.
+					HateCrowded: Я ненавижу когда в одном месте столько людей.
+					LikeNPC_Princess: Мне нравится {NPCName}.
+					Princess_LovesNPC: Мне нравится {NPCName}.
+				}
+
+				Names: {
+					SudarinName: Sudarin
+					SuadrinName: Suadrin
+					SudorinName: Sudorin
+					SDOGEName: SDOGE
+				}
+
+				DisplayName: Гений
+			}
+
+			NpcZeerck: {
+				TownNPCMood: {
+					Content: Это контент.
+					NoHome: Мне не нравится быть бездомным.
+					FarFromHome: Я слишком далеко от дома.
+					LoveSpace: Мне нравиться, когда у меня есть столько пространства.
+					DislikeCrowded: Мне не нравиться так много людей.
+					HateCrowded: Я ненавижу когда в одном месте столько людей.
+					LikeNPC_Princess: Мне нравится {NPCName}.
+					Princess_LovesNPC: Мне нравится {NPCName}.
+				}
+
+				Names: {
+					ZeerckName: Zeerck
+					ZeerckyName: Zeercky
+					Zeer4eckName: Zeer4eck
+					DmitrixName: Дмитрикс
+					Dima800Name: Дима 800
+					DipaName: Дипа
+				}
+
+				DisplayName: Анархист
+			}
+
+			NpcBossLunegov.DisplayName: Лунегов Олег Борисович
+		}
+
+		DeathReason: {
+			NpcDurthu.ForgetConspectusDeathReason: Это самый простой способ позабыть прочитанное... {0} воспользовался этим...
+			NpcSudarin.ReturnConspectusDeathReason: Сердце {0} не выдержало такого сильного чиха от {1}...
+		}
+
+		ChatMessage: {
+			NpcBossLunegov: {
+				SpawningChatMessage1: Вы то гений, я понимаю... Остальные то почему не пишут?
+				DespawningChatMessage1: Вот и вся программа...
+			}
+
+			NpcDurthu.ForgetConspectusChatMessage1: "{0} слегка щелкнул вам по лбу и вы забыли древние знания..."
+			OldPowersOfAnarchizmChatMessage1: Древние силы анархизма были выпущены на волю...
+		}
+
+		Button: {
+			NpcDurthu: {
+				TextButton1: Получить трофей
+				TextButton2: Забыть прочитанное
+			}
+
+			NpcSudarin: {
+				TextButton1: Получить Человечка
+				TextButton2: Вернуть Тетрадь
+			}
+
+			NpcZeerck: {
+				TextButton1: Получить Икону
+				TextButton2: Получить проклятье
+			}
+		}
+
+		Dialogue: {
+			NpcDurthu: {
+				StandartDialogue1: Многие говорят, что я жадный, но для меня 28 миллионов серебренников — это немного.
+				StandartDialogue2: Знаешь, я в какой-то степени тоже "всепишущий".
+				StandartDialogue3: Раньше я доверял Vizart'у...
+				StandartDialogue4: Однажды, в галактике началась война просто потому что {0} пригласил жену галактического императора "выпить чаю".
+				StandartDialogue5: У меня до сих пор эти воспоминания о том, когда мы были в Storm Team... Я просто надеюсь, что больше никогда не встречу этих чёрно-жёлтых "бакуганов".
+				StandartDialogue6: Фабрики - рабочим, рабочих - крестьянам, Милфы - {0}
+				StandartDialogue7: Не доверяй Самураям клана Троцкого.
+				StandartDialogue8: Я пытался достучаться до него, но получил прозвище "Демагог".
+				StandartDialogue9: У меня есть устройство в кармане, оно содержит миллиарды вселенных.
+				StandartDialogue10: От слов "Продолжим" и "Почему не пишите?" мне до сих пор не по себе...
+				StandartDialogue11:
 					'''
-					Кровоточат...
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					**"Симон: За тобой должок, помнишь?"**
+					Нет, я не помню.
 					'''
-				DemoniteNutsName: Демонитовые ЯЙЦА
-				DemoniteNutsDescription:
+				StandartDialogue12: Пожалуйста, никогда не говори "ПОШЛИ" или "ПОЙДЁМ"!
+				BloodMoonDialogue1: ТЫ НЕ ЗНАЕШЬ К ЧЕМУ ЭТО ВЕДЁТ!
+				ConspectusDialogue1: О, у тебя есть тетрадь с конспектами {0}'а! Я думаю тебе стоит показать их ему.
+			}
+
+			NpcSudarin: {
+				StandartDialogue1: "{0} был нашим командиром во времена, когда мы были в Storm Team."
+				StandartDialogue2: Я участвовал в войне с инопланетянами. Они посылали на нас гигантских муравьев, лягушек, пчел и прочих.
+				StandartDialogue3: Интересный факт, однажды {0} знали как "Маджима Сука".
+				StandartDialogue4: Наномашинки СЫНОК!
+				StandartDialogue5: НАПАС — ЛАВАНДОС.
+				StandartDialogue6: В конце концов, в Лос-Сантосе действительно много полиции.
+				StandartDialogue7:
 					'''
-					Принадлежали одной рогчаке...
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					**\"Симон: За тобой должок, помнишь?\"**
+					Сколько можно...
 					'''
-				FossilNutsName: Ископаемые ЯЙЦА
-				FossilNutsDescription:
+				StandartDialogue8: Все боятся Джамбо, но никто не думает о том, чего боится он.
+				ConspectusDialogue1: О! Мои Конспекты! Да, лично я их написал, даже не имея при себе ручки. С их помощью я могу научить тебя навыкам Всепишущего.
+			}
+
+			NpcZeerck: {
+				StandartDialogue1: Чекай!
+				StandartDialogue2: У меня есть машина, которая ломается практически от любого касания, и мне нужно чинить её за 24 000 серебряников. Думаю заменить на что-нибудь, но даже не знаю на что...
+				StandartDialogue3: Я слышал, что {0} всё писал.
+				StandartDialogue4: Ты видел икону святого Всепишущего? Да, это фото самого {0}'а.
+				StandartDialogue5: Будь осторожен, {0} весит 300 килограммов и способен пробить стену или пол, если захочет.
+				StandartDialogue6: Во время 40 000-летней войны, {0} и Я сражались против всех и мы повсюду распространяли скверну. Да, хорошие были времена...
+				StandartDialogue7: Борисыч назвал нас демагогами. Я все еще не понимаю, что ему не нравится во фразе «Вы ошибаетесь».
+				StandartDialogue8: Ненавижу гномов...
+				StandartDialogue9: Где же ты, Jabroni v Tanke?...
+				StandartDialogue10: Ненавижу брёвна...
+				StandartDialogue11: ЯЙЦА
+				StandartDialogue12:
 					'''
-					Старые и окаменелые...
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					**\"Симон: За тобой должок, помнишь?\"**
+					Я все верну! Только оставь меня в покое!
 					'''
-				FrostyNutsName: Морозные ЯЙЦА
-				FrostyNutsDescription:
+				StandartDialogue13: Я просто переменная написанная соло в коде. Наполовину Человек, Наполовину Машина.
+				StandartDialogue14: Мои шутки разрушили миллионы жизней. Все говорят, что они не смешные. Я так не думаю.
+				StandartDialogue15: Перчатка бесконечности... Желание Таноса... Мои шутки... Я думаю, что все это имеет что-то общее.
+				ZeerckToZeerckyDialogue1: Мы Zeercky, мы повсюду...
+				ZeerckToZeer4eckDialogue1: Ты что-нибудь слышал о Zeerck? Надеюсь, он не доставил тебе проблем со своими шутками.
+				ZeerckToDmitrixDialogue1: У меня есть брат на Луне с огромным молотом. Так же у него очень странная голова и бледная кожа.
+				ZeerckToDima800Dialogue1: Свое имя я получил в результате великой войны с миллиардами зомби.
+				ZeerckToDima800Dialogue2: Ты когда-нибудь слышал о челленджах?
+				NightDialogue1: Иногда мне снятся странные сны, где я нахожусь в одной постели с Борисичем. Это... возбуждает меня..?
+				ConspectusDialogue1: О, у тебя есть Конспекты, я думаю, тебе стоит вернуть их {0}'у
+			}
+		}
+
+		ExtraNPCQoutes: {
+			Guide: {
+				ExtraQuote1: "{0} рассказывал мне истории о сотнях Девушках-Кораблях, звучит интересно, но Девушки-Линкоры — это невероятно"
+				ExtraQuote2: Многие говорят, что {0} - [c/ffff64:Гений]
+				ExtraQuote3: Ты знаешь {0}? Он говорит, что прибыл из другого мира. А ещё рассказывал о стонях миров подобных нашему.
+			}
+		}
+
+		Tiles: {
+			TanosFigureTiles.MapEntry: "[c/008000:Зелёный человечек]"
+			BossTrophies.MapEntry: Виртуальная Машина на Ассемблере
+		}
+
+		Buffs: {
+			Nanomachine: {
+				DisplayName: Наномашинка
+				Description: Я думал она будет меньше...
+			}
+
+			StandingHereBuff: {
+				DisplayName: Standing Here, I REALIZE!!!
+				Description: Just like me trying to make history.
+			}
+
+			StopTalkingDebuff: {
+				DisplayName: Прекратите разговаривать!
+				Description: Ты ничего не можешь сделать!
+			}
+
+			WhoWroteEverythingBuff: {
+				DisplayName: Тот, кто всё писал...
+				Description:
 					'''
-					Веет холодом... Stay frosty
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				GoldNutsName: Золотые ЯЙЦА
-				GoldNutsDescription:
-					'''
-					Блестящие и твердые... Как лысина Лунегова
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				HellstoneNutsName: ЯЙЦА из адской стали
-				HellstoneNutsDescription:
-					'''
-					Жжёться... По ощущениям как надеть джинсы без трусов в 40-градусную жару
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				IronNutsName: Железные ЯЙЦА
-				IronNutsDescription:
-					'''
-					Выбор настоящих мужчин! Попробуй их в деле
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				LeadNutsName: Свинцовые ЯЙЦА
-				LeadNutsDescription:
-					'''
-					Крупнокалиберное решение
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				PlatinumNutsName: Платиновые ЯЙЦА
-				PlatinumNutsDescription:
-					'''
-					Выбор любого уважающего себя мужчины
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				SilverNutsName: Серебрянные ЯЙЦА
-				SilverNutsDescription:
-					'''
-					Наследство Ван Хельсинга. Лучше использовать против нечисти
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				TinNutsName: Оловянные ЯЙЦА
-				TinNutsDescription:
-					'''
-					Оловянному человечку они больше не нужны...
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				TungstenNutsName: Вольфрамовые ЯЙЦА
-				TungstenNutsDescription:
-					'''
-					Любят погорячее
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
-					'''
-				WoodNutsName: Деревянные ЯЙЦА
-				WoodNutsDescription:
-					'''
-					Вонючие деревянные ЯЙЦА!
-					Максимум целей {0}
-					Задержка между ударами {1} сек.
-					Радиус {2} блоков.
+					Вы прочитали все конспекты, теперь вы едины с водой и невосприимчивы к огню.
+					Вы воплощение воды.
 					'''
 			}
 		}
 
-
-		NPCName: {
-			NpcDurthu: Отец Всех Милф
-			NpcSudarin: Лорд Пепегон
-			NpcZeerck: Анархист
-		}
-
-		Common: {
-			DurthuName: Дуртху
-			ComradeGruzoffName: Товарищ Грузофф
-			ComradeGruzonName: Товарищ Грузон
-			SudarinName: Сударин
-			SuadrinName: Суадрин
-			SudorinName: Судорин
-			SDOGEName: СДОДЖ
-			ZeerckName: Зирк
-			ZeerckyName: Зирки
-			Zeer4eckName: Зирчик
-			DmitrixName: Дмитрикс
-			Dima800Name: Дима 800
-			DipaName: Дипа
-			NpcDurthuText1: Многие говорят, что я жадный, но для меня 26 миллионов серебряников - это немного.
-			NpcDurthuText2: Знаешь, в какой-то степени я тоже Всепишущий.
-			NpcDurthuText3: Раньше я доверял Визарту...
-			NpcDurthuText4: В галактике была война только потому, что {0} пригласил жену галактического императора «Выпить Чаю».
-			NpcDurthuText5: Знаешь, у меня до сих пор всплывают воспоминания о том времени, когда мы были в Storm Team... Я просто надеюсь, что никогда больше не встречу этих чёрно-жёлтых «бакуганов».
-			NpcDurthuText6: Фабрики — Заводам, Рабочих — Крестьянам, Милф — {0}
-			NpcDurthuText7: Не верь самураям клана Троцкий.
-			NpcDurthuText8: Я пытался достучаться до него, но получил прозвище «Демагог».
-			NpcDurthuText9: У меня есть корманное устройство, в котором хранятся миллиарды вселенных.
-			NpcDurthuText10: Такие слова, как «Продолжим» и «Почему не пишите?»... До сих пор пробирают до костей.
-			NpcDurthuText11:
-				'''
-				**«Саймон: За тобой должок, помнишь?»**
-				Нет, я не помню.
-				'''
-			NpcDurthuText12: Пожалуйста, никогда не говори «Поехали», «Иди со мной», «ПОШЛИ» и «ПОИДЕМ». НИКОГДА!
-			NpcDurthuTextBloodMoon: ТЫ НЕ ЗНАЕШЬ, К ЧЕМУ ЭТО ВЕДЁТ!
-			NpcDurthuTextConspectus1: Оу, у тебя есть конспекты {0}'а! Я думаю тебе стоит обратиться к нему с ними.
-			NpcSudarinText1: "{0} был нашим главным командором, когда мы были в Storm Team."
-			NpcSudarinText2: Я участвовал в войне с инопланетянами. Они послали на нас гигантских муравьев, лягушек, пчел и прочих.
-			NpcSudarinText3: Интересный факт, однажды {0} называли "Маджима Сука!".
-			NpcSudarinText4: Наномашины СЫНОК!
-			NpcSudarinText5: Напас — Лавандос.
-			NpcSudarinText6: В конце концов, в Лос-Сантосе действительно много полицейских.
-			NpcSudarinText7:
-				'''
-				**«Саймон: За тобой должок, помнишь?»**
-				Ох, Опять...
-				'''
-			NpcSudarinText8: Все боятся Джамбо, но никто не думает о том, чего боится он.
-			NpcSudarinTextConspectus: Ох! Мой Конспекты! Да, лично я их написал, даже не имея при себе ручки. С их помощью я могу научить тебя навыкам Теневого Писаря.
-			NpcZeerckText1: Чекай!
-			NpcZeerckText2: У меня есть машина, которая ломается практически от любого касания, и мне нужно чинить её за 24 000 серебряников. Думаю заменить на что-нибудь, но даже не знаю на что...
-			NpcZeerckText3: Я слышал, что {0} всё писал.
-			NpcZeerckText4: Ты видел икону святого всепишущего? Да, это фото самого {0}'а.
-			NpcZeerckText5: Будь осторожен, {0} весит 300 килограммов и способен пробить стену, если захочет.
-			NpcZeerckText6: Во время 40 000-летней войны, {0} и Я сражались против всех и мы повсюду распространяли скверну. Да, хорошие были времена...
-			NpcZeerckText7: Борисыч назвал нас демагогами. Я все еще не понимаю, что ему не нравится во фразе «Вы ошибаетесь».
-			NpcZeerckText8: Ненавижу гномов...
-			NpcZeerckText9: Где же ты, Джаброни в Танке?...
-			NpcZeerckText10: Ненавижу брёвна...
-			NpcZeerckText11: ЯЙЦА
-			NpcZeerckText12:
-				'''
-				**«Саймон: За тобой должок, помнишь?»**
-				Я все верну! Только оставь меня в покое!
-				'''
-			NpcZeerckText13: Я просто переменная написанная соло в коде. Наполовину Человек, Наполовину Машина.
-			NpcZeerckNightText: Иногда мне снятся странные сны, где я нахожусь в одной постели с Борисичем. Это возбуждает меня...
-			NpcZeerckToZeerckText1: Мои шутки разрушили миллионы жизней. Все говорят, что они не смешные. Я так не думаю.
-			NpcZeerckToZeerckText2: Перчатка бесконечности... Желание Таноса... Мои шутки... Я думаю, что все это имеет что-то общее.
-			NpcZeerckToZeerckyText: Мы Zeercky, мы повсюду...
-			NpcZeerckToZeer4eckText: Ты что-нибудь слышал о Зирке? Надеюсь, он не доставил тебе проблем со своими шутками.
-			NpcZeerckToDmitrixText: У меня есть брат на Луне с огромным молотом. Так же у него очень странная голова и бледная кожа.
-			NpcZeerckToDima800Text1: Свое имя Я получил в результате великой войны с миллиардами зомби.
-			NpcZeerckToDima800Text2: Ты когда-нибудь слышал о челленджах?
-			NpcZeerckTextConspectus: О, у тебя есть Конспекты, я думаю, тебе стоит вернуть их {0}
-			NpcDurthuTextButton: Получить Трофей
-			NpcDurthuTextButton2: Забыть Конспекты
-			NpcSudarinTextButton: Получить Человечка
-			NpcSudarinTextButton2: Вернуть Конспекты
-			NpcZeerckTextButton: Получить Икону Святого Всепишущего
-			NpcZeerckTextButton2: Получить Проклятье
-			WhoWroteEverythingBuffName: Тот кто всё писал...
-			WhoWroteEverythingBuffDescription:
-				'''
-				Вы прочитали все конспекты, теперь вы едины с водой и невосприимчивы к огню.
-				Вы воплощение воды.
-				'''
-			StopTalkingDebuffName: Прекратите Разговаривать!
-			StopTalkingDebuffDescription: Вы ничего не можете сделать!
-			BorisichBagName: Сумка с Конспектами
-			BorisichBagDescription:
-				'''
-				Ценой чего вы получили это?
-				<right> чтобы открыть.
-				'''
-			AssemblerVirtualMachineName: Виртуальная Машина на Ассемблере
-			ConspectusName: Конспектики
-			ConspectusDescription:
-				'''
-				Вы чувствуете влагу.
-				Похоже, что тут много воды.
-				'''
-			IconOfHolyAllWritingName: Икона Святого Всепишущего
-			IconOfHolyAllWritingDescription: Начинает Endgame
-			NanomachineName: Наномашинка
-			NanomachineDescription: Просто наномашинка... Не более.
-			GreenManName: Зелёный Человечек
-			GreenManDescription: Ох, опять ваши зелёные человечки...
-			ProgramerSoulName: Частичка Программиста
-			ProgramerSoulDescription: В каждом из нас есть частичка Программиста...
-			BorisichBossName: Борисыч Endgame
-			BorisichBossText1: Вы то гений, я понимаю... Остальные то почему не пишут?
-			BorisichBossText2: Вот и вся программа...
-			BorisichShootName: Сила Ассемблера, Сынок!
-			NpcShootName: Сила C#, Старик!
-			DeathReason1: "Сердце "
-			DeathReason11: " не выдержало столь громкого чиха "
-			DeathReason2: "Это самый простой способ позабыть прочитанное... "
-			DeathReason21: " воспользовался этим..."
-			ForgetConspectus: "{0} легонько щёлкнул вас по лбу и вы позабыли древние знания..."
-			OldPowersOfAnarchizmText: Древние силы Анархизма были выпущены на волю...
-			NanomachineMountDescription: Я думал, она меньше...
-			ExtraGuideQuote1: Ты знаешь {0}? Говорят, он из другого мира. И он рассказывал о сотнях миров, подобных нашему.
-
-			StandingHereBuffName: Standing Here, I REALIZE!!!
-			StandingHereBuffDescription: Just like me trying to make history.
+		Projectiles: {
+			NpcBossLunegovShootProjectile.DisplayName: Сила Ассемблера
+			TownNPCsAttackProjectile.DisplayName: Сила Гения
 		}
 	}
 }

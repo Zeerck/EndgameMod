@@ -1,267 +1,362 @@
 Mods: {
 	Endgame: {
+		NutsWeaponsTooltip: {
+			MaximumTargets: Maximum targets: {0}
+			HitDelay: Hit delay: {0} sec
+			Radius: Radius: {0} blocks
+		}
+
+		DamageClasses.NutsDamageClass.DisplayName: nuts damage
+
 		Items: {
-			Weapons: {
-				BoneNutsName: Bone NUTS
-				BoneNutsDescription:
+			AssemblerTrophy: {
+				DisplayName: Virtual Machine on Assembler
+				Tooltip: Blows with unlimited power
+			}
+
+			BorisichBag: {
+				DisplayName: Treasure Bag (Lunegov)
+				Tooltip:
 					'''
-					Stay dry but always wet
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					[c/ff0e0e:At what cost did you get it?]
+					{$CommonItemTooltip.RightClickToOpen}
 					'''
-				CactusNutsName: Cocktus NUTS
-				CactusNutsDescription:
+			}
+
+			Conspectus: {
+				DisplayName: Notebook with Note-Takings
+				Tooltip:
 					'''
-					Prick...
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					When touched, you feel [c/a9dcf4:moisture]
+					Looks like there's more water here, than information.
+					Only [c/ffff64:Genius] can read this.
 					'''
-				CopperNutsName: Copper NUTS
-				CopperNutsDescription:
+			}
+
+			IconOfHolyAllWriting: {
+				DisplayName: Icon of the Holy All-Writing
+				Tooltip:
 					'''
-					Stronger than wood...
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					[c/ffff64:Genius] himself is depicted here
+					Starts Endgame
+					Use at your own [c/ff0e0e:risk]
 					'''
-				CrimtaneNutsName: Crimtane NUTS
-				CrimtaneNutsDescription:
+			}
+
+			Nanomachine: {
+				DisplayName: Nanomachine
+				Tooltip: This is Nano-Vehicle?
+			}
+
+			ProgramerSoul: {
+				DisplayName: Part of a programmer
+				Tooltip: There is a part of the programmer in each of us.
+			}
+
+			TanosFigure: {
+				DisplayName: The Green Man
+				Tooltip: Ah, your little [c/008000:green man] again...
+			}
+
+			BoneNuts: {
+				DisplayName: Bone NUTS
+				Tooltip: Sounds like [c/e3dac9:dice]
+			}
+
+			CactusNuts: {
+				DisplayName: Cocktus NUTS
+				Tooltip: "[c/2E6021:Prickly...]"
+			}
+
+			CopperNuts: {
+				DisplayName: Copper NUTS
+				Tooltip: Probably, better than [c/966F33:wood]...
+			}
+
+			CrimtaneNuts: {
+				DisplayName: Bloody NUTS
+				Tooltip: "[c/880808:Bleed...]"
+			}
+
+			DemoniteNuts: {
+				DisplayName: Demonite NUTS
+				Tooltip: Belonged to one horny...
+			}
+
+			FossilNuts: {
+				DisplayName: Fossil NUTS
+				Tooltip: Old and [c/8d7961:petrified]...
+			}
+
+			FrostyNuts: {
+				DisplayName: Frosty NUTS
+				Tooltip: Stay [c/99CCFF:frosty]
+			}
+
+			GoldNuts: {
+				DisplayName: Gold NUTS
+				Tooltip: Shiny and durable... Like Lunegov's [c/FFED8A:bald head]
+			}
+
+			HellstoneNuts: {
+				DisplayName: Hellstone NUTS
+				Tooltip: "[c/ff6c3b:Burning...] Feels like wearing jeans without panties in 40-degree heat"
+			}
+
+			IronNuts: {
+				DisplayName: Iron NUTS
+				Tooltip: The choice of real men! Try them out
+			}
+
+			LeadNuts: {
+				DisplayName: Lead NUTS
+				Tooltip: "[c/5c6274:Large caliber] solution"
+			}
+
+			PlatinumNuts: {
+				DisplayName: Platinum NUTS
+				Tooltip: Any [c/e5e4e2:self-respecting] man's choice
+			}
+
+			SilverNuts: {
+				DisplayName: Silver NUTS
+				Tooltip: Van Helsing's legacy. Better to use against [c/730073:evil] spirits
+			}
+
+			TinNuts: {
+				DisplayName: Tin NUTS
+				Tooltip: The [c/e4dba2:Tin Man] doesn't need them anymore...
+			}
+
+			TungstenNuts: {
+				DisplayName: Tungsten NUTS
+				Tooltip: They love it [c/ff7251:hot]
+			}
+
+			WoodNuts: {
+				DisplayName: Wood NUTS
+				Tooltip: Stinky Wooden NUTS!
+			}
+
+			TestItem: {
+				DisplayName: Test Item
+				Tooltip: Can break your PC
+			}
+		}
+
+		NPCs: {
+			NpcDurthu: {
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+
+				Names: {
+					DurthuName: Durthu
+					ComradeGruzoffName: Comrade Gruzoff
+					ComradeGruzonName: Comrade Gruzon
+				}
+
+				DisplayName: Father of all Milf's
+			}
+
+			NpcSudarin: {
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+
+				Names: {
+					SudarinName: Sudarin
+					SuadrinName: Suadrin
+					SudorinName: Sudorin
+					SDOGEName: SDOGE
+				}
+
+				DisplayName: Genius
+			}
+
+			NpcZeerck: {
+				TownNPCMood: {
+					Content: I am content.
+					NoHome: I hate not having a home.
+					FarFromHome: I am too far from home.
+					LoveSpace: I love having so much space.
+					DislikeCrowded: I dislike how crowded I am.
+					HateCrowded: I hate how crowded I am.
+					LikeNPC_Princess: I like {NPCName}.
+					Princess_LovesNPC: I like {NPCName}.
+				}
+
+				Names: {
+					ZeerckName: Zeerck
+					ZeerckyName: Zeercky
+					Zeer4eckName: Zeer4eck
+					DmitrixName: Dmitrix
+					Dima800Name: Dima 800
+					DipaName: Dipa
+				}
+
+				DisplayName: Anarchist
+			}
+
+			NpcBossLunegov.DisplayName: Lunegov Oleg Borisovich
+		}
+
+		DeathReason: {
+			NpcDurthu.ForgetConspectusDeathReason: This is the easiest way to forget what you read... {0} took advantage of this...
+			NpcSudarin.ReturnConspectusDeathReason: Heart {0} could not stand such a loud sneeze of {1}...
+		}
+
+		ChatMessage: {
+			NpcBossLunegov: {
+				SpawningChatMessage1: You are a genius, I understand... Why don't the others write?
+				DespawningChatMessage1: That's the whole program...
+			}
+
+			NpcDurthu.ForgetConspectusChatMessage1: "{0} lightly clicked on your forehead and you forgot the ancient knowledge..."
+			OldPowersOfAnarchizmChatMessage1: The ancient forces of Anarchism were unleashed...
+		}
+
+		Button: {
+			NpcDurthu: {
+				TextButton1: Get Trophy
+				TextButton2: Forget whats been read
+			}
+
+			NpcSudarin: {
+				TextButton1: Get Green Man
+				TextButton2: Return Conspectus
+			}
+
+			NpcZeerck: {
+				TextButton1: Get Icon Of Holy All-Writer
+				TextButton2: Get Curse
+			}
+		}
+
+		Dialogue: {
+			NpcDurthu: {
+				StandartDialogue1: Many people say I'm greedy, but as for me 26 million pieces of silver is not much.
+				StandartDialogue2: You know, to some extent I too "All-Writing".
+				StandartDialogue3: I trust Vizart before...
+				StandartDialogue4: There was a war in a galaxy just because {0} invited a wife of galactic emperor to "drink some tea".
+				StandartDialogue5: You know, i still have flashbacks from the time we were in Storm Team... I just hope i will never ever meet this black-yellow "bakugans" again.
+				StandartDialogue6: Factories for Workers, Workers for Peasants, Milf's for {0}
+				StandartDialogue7: Do not trust the samurai of the Trotsky clan.
+				StandartDialogue8: I tried to reach him, but get name "Demagogue".
+				StandartDialogue9: I have a device in my pocket that contains over billions universes.
+				StandartDialogue10: Words like "Continue" and "Why you don't writing?"... i still get shivers.
+				StandartDialogue11:
 					'''
-					Bleed...
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					**"Simon: You owe me a favor, remember?"**
+					No, i don't remember.
 					'''
-				DemoniteNutsName: Demonite NUTS
-				DemoniteNutsDescription:
+				StandartDialogue12: Please never say "LET'S GO", "COME WITH ME", "POSHLI" and "POIDEM". NEVER!
+				BloodMoonDialogue1: YOU DON'T KNOW WHAT IT WILL LEAD TO!
+				ConspectusDialogue1: Oh, you have {0}'s Conspectus! I think you should contact him with them.
+			}
+
+			NpcSudarin: {
+				StandartDialogue1: "{0} was our chief commander in the times, when we was in Storm Team."
+				StandartDialogue2: I participated in the war against the aliens. They sent at us giant ants, frogs, bees and etc.
+				StandartDialogue3: An interesting fact, once {0} name was "Majima Bitch".
+				StandartDialogue4: Nanomachines SON!
+				StandartDialogue5: Napas - Lavandos.
+				StandartDialogue6: After all, there are really a lot of cops in Los Santos.
+				StandartDialogue7:
 					'''
-					Belonged to one horny...
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					**\"Simon: You owe me a favor, remember?\"**
+					Ah, Again...
 					'''
-				FossilNutsName: Fossil NUTS
-				FossilNutsDescription:
+				StandartDialogue8: Everyone is afraid of Jumbo, but no one thinks about what he is afraid of.
+				ConspectusDialogue1: Oh! My Conspectus! Yes, I personally wrote them without even having a pen. With their help, I can teach you the skills of the Shadow Scribe.
+			}
+
+			NpcZeerck: {
+				StandartDialogue1: Check!
+				StandartDialogue2: I had a vehicle that breaks down on almost any touch, and I need to fix it for 24,000 silver coins. I'm thinking of replacing it with something, but I don't even know what...
+				StandartDialogue3: I heard that {0} wrote everything.
+				StandartDialogue4: Have you seen the icon of the holy all-writing? Yes, there is a photo of {0} himself.
+				StandartDialogue5: Be careful, {0} weighs 300 kilograms and is capable of breaking through a wall if he wants to.
+				StandartDialogue6: During the 40,000 year war, {0} and I fought against all and spread defilement everywhere. Yes, there were good times...
+				StandartDialogue7: Lunegov called us demagogues. I still didn’t understand what he didn’t like in the phrase "You are wrong."
+				StandartDialogue8: I hate gnomes...
+				StandartDialogue9: Where are you, Jabroni v Tanke?...
+				StandartDialogue10: I hate logs...
+				StandartDialogue11: EGGS
+				StandartDialogue12:
 					'''
-					Old and petrified...
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					**\"Simon: You owe me a favor, remember?\"**
+					I will return everything! Just leave me alone!
 					'''
-				FrostyNutsName: Frosty NUTS
-				FrostyNutsDescription:
+				StandartDialogue13: I'm just a number riding solo in the code. Half Human, half Machine.
+				StandartDialogue14: My jokes have ruined millions of lives. Everyone says they are not funny. I don't think so.
+				StandartDialogue15: Infinity Gauntlet... Thanos' Wish... My jokes... I think it all has something in common.
+				ZeerckToZeerckyDialogue1: We are Zeercky, we are everywhere...
+				ZeerckToZeer4eckDialogue1: Have you heard anything about Zeerck? I hope he didn't give you any trouble with his jokes.
+				ZeerckToDmitrixDialogue1: I have a brother on the moon with a huge hammer. He also has a very strange head and pale skin.
+				ZeerckToDima800Dialogue1: I got my name from the great war against billions of zombies.
+				ZeerckToDima800Dialogue2: Have you ever heard about challenges?
+				NightDialogue1: Sometimes I have strange dreams, where I am in the same bed with Lunegov. It scares me...
+				ConspectusDialogue1: Oh, you have Conspectus, I think you should return them to {0}
+			}
+		}
+
+		ExtraNPCQoutes: {
+			Guide: {
+				ExtraQuote1: "{0} sayed me stories about hundreds ship-girls, sounds interesting, but battleship girls is unbelievable!"
+				ExtraQuote2: Many say {0} is a [c/ffff64:Genius]
+				ExtraQuote3: Do you know {0}? I heard that he is from another world. He talked about hundreds of worlds like ours.
+			}
+		}
+
+		Tiles: {
+			TanosFigureTiles.MapEntry: Tanos Figure Tiles
+			BossTrophies.MapEntry: Boss Trophies
+		}
+
+		Buffs: {
+			Nanomachine: {
+				DisplayName: Nanomachine
+				Description: I thought this was be smaller...
+			}
+
+			StandingHereBuff: {
+				DisplayName: Standing Here, I REALIZE!!!
+				Description: Just like me trying to make history.
+			}
+
+			StopTalkingDebuff: {
+				DisplayName: Stop Talking!
+				Description: You can't do anything!
+			}
+
+			WhoWroteEverythingBuff: {
+				DisplayName: The one who wrote everything...
+				Description:
 					'''
-					It blows cold... Stay frosty
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				GoldNutsName: Gold NUTS
-				GoldNutsDescription:
-					'''
-					Shiny and durable... Like Lunegov's bald head
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				HellstoneNutsName: Hellstone NUTS
-				HellstoneNutsDescription:
-					'''
-					It burns... Feels like wearing jeans without panties in 40-degree heat
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				IronNutsName: Iron NUTS
-				IronNutsDescription:
-					'''
-					The choice of real men! Try them out
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				LeadNutsName: Lead NUTS
-				LeadNutsDescription:
-					'''
-					Large caliber solution
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				PlatinumNutsName: Platinum NUTS
-				PlatinumNutsDescription:
-					'''
-					Any self-respecting man's choice
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				SilverNutsName: Silver NUTS
-				SilverNutsDescription:
-					'''	
-					Van Helsing's legacy. Better to use against evil spirits
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				TinNutsName: Tin NUTS
-				TinNutsDescription:
-					'''	
-					The Tin Man doesn't need them anymore...
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				TungstenNutsName: Tungsten NUTS
-				TungstenNutsDescription:
-					'''	
-					They love it hot
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
-					'''
-				WoodNutsName: Wood NUTS
-				WoodNutsDescription:
-					'''
-					Stinky Wooden NUTS!
-					Maximum targets {0}
-					Delay between hits {1} sec.
-					Radius {2} blocks
+					You have read all Conspectus, now you are one with water and are immune to fire.
+					You are the embodiment of water.
 					'''
 			}
 		}
 
-		Common: {
-			DurthuName: Durthu
-			ComradeGruzoffName: Comrade Gruzoff
-			ComradeGruzonName: Comrade Gruzon
-			SudarinName: Sudarin
-			SuadrinName: Suadrin
-			SudorinName: Sudorin
-			SDOGEName: SDOGE
-			ZeerckName: Zeerck
-			ZeerckyName: Zeercky
-			Zeer4eckName: Zeer4eck
-			DmitrixName: Dmitrix
-			Dima800Name: Dima 800
-			DipaName: Dipa
-			NpcDurthuText1: Many people say I'm greedy, but as for me 26 million pieces of silver is not much.
-			NpcDurthuText2: You know, to some extent I too "All-Writing".
-			NpcDurthuText3: I trust Vizart before...
-			NpcDurthuText4: "There was a war in a galaxy just because "
-			NpcDurthuText41: ''' invited a wife of galactic emperor to "drink some tea".'''
-			NpcDurthuText5: You know, i still have flashbacks from the time we were in Storm Team... I just hope i will never ever meet this black-yellow "bakugans" again.
-			NpcDurthuText6: "Fabrics to Factories, Workers to Peasants, Milf's to "
-			NpcDurthuText7: Do not trust the samurai of the Trotsky clan.
-			NpcDurthuText8: I tried to reach him, but get name "Demogogue".
-			NpcDurthuText9: I have a device in my pocket that contains over billions universes.
-			NpcDurthuText10: Words like "Continue" and "Why you don't writing?"... i still get shivers.
-			NpcDurthuText11:
-				'''
-				**"Simon: You owe me a favor, remember?"**
-				No, i don't remember.
-				'''
-			NpcDurthuText12: Please never say "LET'S GO", "COME WITH ME", "POSHLI" and "POIDEM". NEVER!
-			NpcDurthuTextBloodMoon: YOU DON'T KNOW WHAT IT WILL LEAD TO!
-			NpcDurthuTextConspectus1: "Oh, you have "
-			NpcDurthuTextConspectus12: "'s Conspectus! I think you should contact him with them."
-			NpcSudarinText1: " was our chief commander in the times, when we was in Storm Team."
-			NpcSudarinText2: I participated in the war against the aliens. They sent at us giant ants, frogs, bees and etc.
-			NpcSudarinText3: "An interesting fact, once "
-			NpcSudarinText31: ''' name was "Majima Bitch".'''
-			NpcSudarinText4: Nanomachines SON!
-			NpcSudarinText5: Napas - Lavandos.
-			NpcSudarinText6: After all, there are really a lot of cops in Los Santos.
-			NpcSudarinText7:
-				'''
-				**\"Simon: You owe me a favor, remember?\"**
-				Ah, Again...
-				'''
-			NpcSudarinText8: Everyone is afraid of Jumbo, but no one thinks about what he is afraid of.
-			NpcSudarinTextConspectus: Oh! My Conspectus! Yes, I personally wrote them without even having a pen. With their help, I can teach you the skills of the Shadow Scribe.
-			NpcZeerckText1: Check!
-			NpcZeerckText2: I have a vehicle that breaks down on almost any touch, and I need to fix it for 24,000 silver coins. I'm thinking of replacing it with something, but I don't even know what...
-			NpcZeerckText3: "I heard that "
-			NpcZeerckText31: " wrote everything."
-			NpcZeerckText4: "Have you seen the icon of the holy all-writing? Yes, there is a photo of "
-			NpcZeerckText41: " himself."
-			NpcZeerckText5: "Be careful, "
-			NpcZeerckText51: " weighs 300 kilograms and is capable of breaking through a wall if he wants to."
-			NpcZeerckText6: "During the 40,000 year war, "
-			NpcZeerckText61: " and I fought against all and spread defilement everywhere. Yes, there were good times..."
-			NpcZeerckText7: Borisich called us demagogues. I still didn’t understand what he didn’t like in the phrase "You are wrong."
-			NpcZeerckText8: I hate gnomes...
-			NpcZeerckText9: Where are you, Jabroni v Tanke?...
-			NpcZeerckText10: I hate logs...
-			NpcZeerckText11: EGGS
-			NpcZeerckText12:
-				'''
-				**\"Simon: You owe me a favor, remember?\"**
-				I will return everything! Just leave me alone!
-				'''
-			NpcZeerckText13: I'm just a number riding solo in the code. Half Human, half Machine.
-			NpcZeerckNightText: Sometimes I have strange dreams, where I am in the same bed with Borisich. It horny me...
-			NpcZeerckToZeerckText1: My jokes have ruined millions of lives. Everyone says they are not funny. I don't think so.
-			NpcZeerckToZeerckText2: Infinity Gauntlet... Thanos' Wish... My jokes... I think it all has something in common.
-			NpcZeerckToZeerckyText: We are Zeercky, we are everywhere ...
-			NpcZeerckToZeer4eckText: Have you heard anything about Zeerck? I hope he didn't give you any trouble with his jokes.
-			NpcZeerckToDmitrixText: I have a brother on the moon with a huge hammer. He also has a very strange head and pale skin.
-			NpcZeerckToDima800Text1: I got my name from the great war against billions of zombies.
-			NpcZeerckToDima800Text2: Have you ever heard about challenges?
-			NpcDurthuTextConspectus: "Oh, you have Conspectus, I think you should return them to "
-			NpcDurthuTextButton: Get Trophy
-			NpcDurthuTextButton2: Forget Conspectus
-			NpcSudarinTextButton: Get Green Men
-			NpcSudarinTextButton2: Return Conspectus
-			NpcZeerckTextButton: Get Icon Of Holy All-Writer
-			NpcZeerckTextButton2: Get Curse
-			WhoWroteEverythingBuffName: The one who wrote everything...
-			WhoWroteEverythingBuffDescription:
-				'''
-				You have read all Conspectus, now you are one with water and are immune to fire.
-				You are the embodiment of water.
-				'''
-			StopTalkingDebuffName: Stop Talking!
-			StopTalkingDebuffDescription: You can't do anything!
-			BorisichBagName: Bag with Conspectus
-			BorisichBagDescription:
-				'''
-				At what cost did you get it?
-				<right> to open it.
-				'''
-			AssemblerVirtualMachineName: Assembler Virtual Machine
-			ConspectusName: Conspectus
-			ConspectusDescription:
-				'''
-				You feel moisture.
-				It looks like there is a lot of water here.
-				'''
-			IconOfHolyAllWritingName: Icon of the Holy All-Writing
-			IconOfHolyAllWritingDescription: The beginning of the Endgame
-			NanomachineName: Nanomachine
-			NanomachineDescription: Just Nanomachine... No more.
-			GreenManName: The Green Man
-			GreenManDescription: Ah, again, your little green mens...
-			ProgramerSoulName: Piece of Programmer
-			ProgramerSoulDescription: Each of us has a part of Programmer...
-			BorisichBossName: Borisich Endgame
-			BorisichBossText1: You are a genius, I understand... Why don't the others write?
-			BorisichBossText2: That's the whole program...
-			BorisichShootName: Assembler Power, Son!
-			NpcShootName: C# Power, Old Man!
-			DeathReason1: "Heart "
-			DeathReason12: " could not stand such a loud sneeze "
-			DeathReason2: "This is the easiest way to forget what you read... "
-			DeathReason21: " took advantage of this..."
-			ForgetConspectus: " lightly clicked your forehead and you forgot the ancient knowledge..."
-			OldPowersOfAnarchizmText: The ancient forces of Anarchism were unleashed...
-			NanomachineMountDescription: I thought she was smaller...
-			ExtraGuideQuote1: Do you know {0}? They say he is from another world. And he talked about hundreds of worlds like ours.
-
-			StandingHereBuffName: Standing Here, I REALIZE!!!
-			StandingHereBuffDescription: Just like me trying to make history.
+		Projectiles: {
+			NpcBossLunegovShootProjectile.DisplayName: Assembler Power
+			TownNPCsAttackProjectile.DisplayName: Genius Power
 		}
 	}
 }
