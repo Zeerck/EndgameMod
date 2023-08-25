@@ -4,6 +4,7 @@ using Endgame.Tiles.Decorative;
 
 namespace Endgame.Items
 {
+    //TODO: Исправить двухкратный дроп при добыче.
     public class TanosFigure : ModItem
     {
         public override void SetDefaults()

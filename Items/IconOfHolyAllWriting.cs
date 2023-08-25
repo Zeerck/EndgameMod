@@ -26,11 +26,11 @@ namespace Endgame.Items
             SoundEngine.PlaySound(new SoundStyle("Endgame/Sounds/Custom/Borisich_vi_to_genii"), player.position);
 
             if (Main.netMode != NetmodeID.MultiplayerClient)
-                NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
+                NPC.SpawnOnPlayer(player.whoAmI, ModContent.NPCType<NPCs.Bosses.NpcBossLunegov>());
             else
-                NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, player.whoAmI, ModContent.NPCType<NPCs.Bosses.BorisichEndgameBoss>());
+                NetMessage.SendData(MessageID.SpawnBossUseLicenseStartEvent, player.whoAmI, ModContent.NPCType<NPCs.Bosses.NpcBossLunegov>());
 
-            EndgameUtils.DisplayLocalizedText("Mods.Endgame.Common.BorisichBossText1");
+            EndgameUtils.DisplayLocalizedText("Mods.Endgame.ChatMessage.NpcBossLunegov.SpawningChatMessage1");
 
             return true;
         }

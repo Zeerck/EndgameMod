@@ -16,10 +16,10 @@ namespace Endgame.NPCs.TownNPCs
 
         private readonly List<string> _names = new()
         {
-            Language.GetTextValue("Mods.Endgame.Common.SudarinName"),
-            Language.GetTextValue("Mods.Endgame.Common.SuadrinName"),
-            Language.GetTextValue("Mods.Endgame.Common.SudorinName"),
-            Language.GetTextValue("Mods.Endgame.Common.SDOGEName")
+            Language.GetTextValue("Mods.Endgame.NPCs.NpcSudarin.Names.SudarinName"),
+            Language.GetTextValue("Mods.Endgame.NPCs.NpcSudarin.Names.SuadrinName"),
+            Language.GetTextValue("Mods.Endgame.NPCs.NpcSudarin.Names.SudorinName"),
+            Language.GetTextValue("Mods.Endgame.NPCs.NpcSudarin.Names.SDOGEName")
         };
 
         public override void SetStaticDefaults()
@@ -103,32 +103,32 @@ namespace Endgame.NPCs.TownNPCs
 
             List<string> chatList = new()
             {
-                Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText2"),
-                Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText4"),
-                Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText5"),
-                Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText6"),
-                Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText7"),
-                Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText8")
+                Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue2"),
+                Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue4"),
+                Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue5"),
+                Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue6"),
+                Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue7"),
+                Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue8")
             };
 
             if (EndgameWorld.DurthuExist)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText1", _durthuNPCName));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue1", _durthuNPCName));
 
             if (EndgameWorld.ZeerckExist)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCSudarinText3", _zeerckNPCName));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.StandartDialogue3", _zeerckNPCName));
 
             if (Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspektyReturned)
-                chatList.Add(Language.GetTextValue("Mods.Endgame.Common.NPCSudarinTextConspectus"));
+                chatList.Add(Language.GetTextValue("Mods.Endgame.Dialogue.NpcSudarin.ConspectusDialogue1"));
 
             return chatList[Main.rand.Next(chatList.Count)];
         }
 
         public override void SetChatButtons(ref string button, ref string button2)
         {
-            button = Language.GetTextValue("Mods.Endgame.Common.NPCSudarinTextButton");
+            button = Language.GetTextValue("Mods.Endgame.Button.NpcSudarin.TextButton1");
 
             if (EndgameWorld.SudarinExist && Main.LocalPlayer.HasItem(ModContent.ItemType<Items.Conspectus>()) && !EndgameWorld.conspektyReturned)
-                button2 = Language.GetTextValue("Mods.Endgame.Common.NPCSudarinTextButton2");
+                button2 = Language.GetTextValue("Mods.Endgame.Button.NpcSudarin.TextButton2");
         }
 
         public override void OnChatButtonClicked(bool firstButton, ref string shopName)
@@ -143,7 +143,7 @@ namespace Endgame.NPCs.TownNPCs
                 Main.LocalPlayer.ConsumeItem(ModContent.ItemType<Items.Conspectus>());
                 EndgameWorld.conspektyReturned = true;
                 EndgameUtils.DisplayLocalizedText("AH CHOOOOO!", Colors.RarityBlue); //TODO: Localize this
-                EndgameUtils.AhChooKill();
+                EndgameUtils.AhChooKill(Language.GetTextValue("Mods.Endgame.DeathReason.NpcSudarin.ReturnConspectusDeathReason", Main.LocalPlayer.name, NPC.GivenName), NPC);
             }
         }
 
@@ -163,7 +163,7 @@ namespace Endgame.NPCs.TownNPCs
 
         public override void TownNPCAttackProj(ref int projType, ref int attackDelay)
         {
-            projType = ModContent.ProjectileType<Projectiles.NPCs.NPCsShoot>();
+            projType = ModContent.ProjectileType<Projectiles.NPCs.TownNPCsAttackProjectile>();
             attackDelay = 1;
         }
 
