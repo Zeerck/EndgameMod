@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace Endgame.Projectiles.NPCs
 {
-    public class NPCsShoot : ModProjectile
+    public class TownNPCsAttackProjectile : ModProjectile
     {
         public override void SetStaticDefaults()
         {
@@ -18,8 +18,10 @@ namespace Endgame.Projectiles.NPCs
 
         public override void SetDefaults()
         {
-            Projectile.width = 62;
-            Projectile.height = 60;
+            Projectile.width = 31;
+            Projectile.height = 18;
+            //Projectile.width = 62;
+            //Projectile.height = 60;
 
             AIType = ProjectileID.Bullet;
 
@@ -71,7 +73,7 @@ namespace Endgame.Projectiles.NPCs
             return false;
         }
 
-        public override Nullable<bool> CanDamage()/* tModPorter Suggestion: Return null instead of true */ => Projectile.timeLeft >= 85;
+        public override bool? CanDamage()/* tModPorter Suggestion: Return null instead of true */ => Projectile.timeLeft >= 85;
 
         public override Color? GetAlpha(Color lightColor)
         {
