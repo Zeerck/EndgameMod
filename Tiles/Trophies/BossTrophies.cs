@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 
 namespace Endgame.Tiles.Trophies
 {
+    // TODO: Исправить двухкратный дроп при добыче.
     public class BossTrophies : ModTile
     {
         public override void SetStaticDefaults()
