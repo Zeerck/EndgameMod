@@ -1,5 +1,6 @@
 ﻿using Terraria;
 using Terraria.ModLoader;
+using Terraria.GameContent.ItemDropRules;
 
 namespace Endgame
 {
@@ -9,14 +10,12 @@ namespace Endgame
 
         public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
         {
-            var source = npc.GetSource_Loot();
-
             if (!npc.boss && !npc.friendly && npc.CanBeChasedBy())
-                EndgameDropper.DropItem(source, npc, ModContent.ItemType<Items.ProgramerSoul>(), 1, 10);
-            if(npc.boss && !Main.hardMode)
-                EndgameDropper.DropItem(source, npc, ModContent.ItemType<Items.ProgramerSoul>(), 5000, 20000);
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.ProgramerSoul>(), 1, 1, 10));
+            if (npc.boss && !Main.hardMode)
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.ProgramerSoul>(), 1, 5000, 20000));
             if (npc.boss && Main.hardMode)
-                EndgameDropper.DropItem(source, npc, ModContent.ItemType<Items.ProgramerSoul>(), 10000, 30000);
+                npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Items.ProgramerSoul>(), 1, 10000, 30000));
         }
     }
 }

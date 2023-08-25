@@ -1,4 +1,9 @@
-﻿using Terraria;
+﻿using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Terraria;
 using Terraria.ID;
 using Terraria.Enums;
 using Terraria.Audio;
@@ -7,12 +12,7 @@ using Terraria.ObjectData;
 using Terraria.Localization;
 using Terraria.DataStructures;
 using Microsoft.Xna.Framework;
-
-using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Collections.Generic;
+using Endgame.DamageClasses;
 
 namespace Endgame
 {
@@ -123,17 +123,15 @@ namespace Endgame
             });
         }
 
-        public static void AhChooKill()
+        public static void AhChooKill(string deathReasonText, NPC npc)
         {
-            int npcSudarin = NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcSudarin>());
-
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 if (Main.npc[i].active)
                 {
                     if (EndgameWorld.DurthuExist && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcDurthu>())])
                         continue;
-                    if (Main.npc[i] == Main.npc[npcSudarin])
+                    if (Main.npc[i] == npc)
                         continue;
                     if (EndgameWorld.ZeerckExist && Main.npc[i] == Main.npc[NPC.FindFirstNPC(ModContent.NPCType<NPCs.TownNPCs.NpcZeerck>())])
                         continue;
@@ -141,9 +139,7 @@ namespace Endgame
                     Main.npc[i].SimpleStrikeNPC(Main.npc[i].lifeMax, -Main.npc[i].direction, true, 0, null, false, 0, true);
                 }
             }
-            Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(Language.GetTextValue("Mods.Endgame.Common.DeathReason1") +
-                Main.LocalPlayer.name + Language.GetTextValue("Mods.Endgame.Common.DeathReason11") + Main.npc[npcSudarin].GivenName + "'a..."),
-                Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
+            Main.LocalPlayer.KillMe(PlayerDeathReason.ByCustomReason(deathReasonText), Main.LocalPlayer.statLife, -Main.LocalPlayer.direction);
         }
 
         public static void DrawTargettableEffect(NPC enemy, int type)
@@ -152,10 +148,10 @@ namespace Endgame
             dustVector.Normalize();
             dustVector.X *= 0.66f;
             dustVector.Y = Math.Abs(dustVector.Y);
-            Vector2 stinkyDustVector = dustVector * Main.rand.Next(3, 5) * 0.25f;
-            Dust stinkyDust = Dust.NewDustDirect(enemy.position, enemy.width, enemy.height, type, stinkyDustVector.X, stinkyDustVector.Y * 0.5f, 100, default, 1.5f);
-            stinkyDust.velocity *= 0.1f;
-            stinkyDust.velocity.Y -= 0.5f;
+            Vector2 effectDustVector = dustVector * Main.rand.Next(3, 5) * 0.25f;
+            Dust effectDust = Dust.NewDustDirect(enemy.position, enemy.width, enemy.height, type, effectDustVector.X, effectDustVector.Y * 0.5f, 100, default, 1.5f);
+            effectDust.velocity *= 0.1f;
+            effectDust.velocity.Y -= 0.5f;
         }
 
         public static void DrawDustRadius(Player player, float radius, int type, int amount = 16)
@@ -213,7 +209,7 @@ namespace Endgame
             return targetList;
         }
 
-        public static void DoNutsDamage(Player player, Item item, int maxTargets, int hitFrequency, int dustType, float focusRadius)
+        public static void DoNutsDamage(Player player, Item item, int maxTargets, int hitFrequency, int dustType, float focusRadius, DamageClass damageClass = null)
         {
             Vector2 mouse = new(Main.screenPosition.X + Main.mouseX, Main.screenPosition.Y + Main.mouseY);
             List<NPC> enemiesList = GetTargettableNPCs(player.Center, mouse, focusRadius, maxTargets);
@@ -226,7 +222,14 @@ namespace Endgame
                 {
                     if ((int)Main.time % hitFrequency == 1)
                     {
-                        NPC.HitInfo hitInfo = enemy.CalculateHitInfo(item.damage, -(int)(enemy.DirectionTo(player.position).X * 1.5f), Main.rand.NextBool(item.crit, 100), item.knockBack);
+                        NPC.HitInfo hitInfo = enemy.CalculateHitInfo(
+                            damage: item.damage,
+                            hitDirection: -(int)(enemy.DirectionTo(player.position).X * 1.5f),
+                            crit: Main.rand.NextBool(item.crit, 100),
+                            knockBack: item.knockBack,
+                            damageType: ModContent.GetInstance<NutsDamageClass>()
+                            );
+
                         enemy.StrikeNPC(hitInfo);
                     }
 
